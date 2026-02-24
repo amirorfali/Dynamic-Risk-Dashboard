@@ -1,0 +1,24 @@
+[project]
+name = "dynamic-risk-dashboard"
+version = "0.1.0"
+dependencies = [
+  "fastapi",
+  "uvicorn",
+  "pydantic-settings",
+  "python-dotenv",
+  "ruff",
+  "black",
+  "pytest",
+  "streamlit",
+  "plotly"
+]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
