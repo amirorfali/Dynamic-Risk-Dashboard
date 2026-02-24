@@ -2,6 +2,9 @@
 name = "dynamic-risk-dashboard"
 version = "0.1.0"
 dependencies = [
+  "numpy",
+  "pandas",
+  "yfinance",
   "fastapi",
   "uvicorn",
   "pydantic-settings",

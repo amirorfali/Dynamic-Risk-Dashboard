@@ -1,0 +1,12 @@
+numpy
+pandas
+yfinance
+fastapi
+uvicorn
+pydantic-settings
+python-dotenv
+ruff
+black
+pytest
+streamlit
+plotly
