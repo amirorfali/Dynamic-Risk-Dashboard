@@ -1,10 +1,12 @@
 import numpy as np
 import pandas as pd
 
+# Core data pipeline utilities under test.
 from app.core.data import calibrate_mu_sigma, compute_returns, ensure_psd, load_prices_csv
 
 
 def _write_prices_csv(path):
+    # Create a tiny, deterministic price dataset in long format.
     rows = [
         ["date", "ticker", "close"],
         ["2024-01-02", "AAA", "100.0"],
@@ -18,6 +20,7 @@ def _write_prices_csv(path):
 
 
 def test_load_prices_csv_shapes(tmp_path):
+    # Verify that a long-format CSV is pivoted into a (dates x tickers) matrix.
     csv_path = tmp_path / "prices.csv"
     _write_prices_csv(csv_path)
     prices = load_prices_csv(csv_path)
@@ -26,6 +29,7 @@ def test_load_prices_csv_shapes(tmp_path):
 
 
 def test_returns_and_calibration_shapes(tmp_path):
+    # Check that returns, mu, and sigma have expected shapes after calibration.
     csv_path = tmp_path / "prices.csv"
     _write_prices_csv(csv_path)
     prices = load_prices_csv(csv_path)
@@ -37,6 +41,8 @@ def test_returns_and_calibration_shapes(tmp_path):
 
 
 def test_covariance_psd_fix():
+    # Build a slightly non-PSD covariance matrix, apply the fix,
+    # and assert the eigenvalues are non-negative (within tolerance).
     cov = pd.DataFrame(
         [[1.0, 1.01], [1.01, 1.0]],
         index=["AAA", "BBB"],

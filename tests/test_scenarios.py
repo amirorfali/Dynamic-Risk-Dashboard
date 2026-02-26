@@ -3,10 +3,13 @@ import math
 import numpy as np
 import pandas as pd
 
+# Scenario transforms under test.
 from app.core.scenarios import apply_corr_spike, apply_vol_multiplier
 
 
 def _norm_ppf(p: float) -> float:
+    # Approximate inverse CDF for the standard normal distribution.
+    # This keeps tests dependency-free while enabling VaR sanity checks.
     # Acklam approximation
     if not (0.0 < p < 1.0):
         raise ValueError("p must be in (0,1)")
@@ -67,6 +70,7 @@ def _norm_ppf(p: float) -> float:
 
 
 def _portfolio_var(mu: pd.Series, sigma: pd.DataFrame, w: np.ndarray, alpha: float) -> float:
+    # One-period parametric VaR for a linear portfolio under normality.
     z = _norm_ppf(alpha)
     port_var = float(w.T @ sigma.values @ w)
     port_mu = float(w.T @ mu.values)
@@ -74,6 +78,7 @@ def _portfolio_var(mu: pd.Series, sigma: pd.DataFrame, w: np.ndarray, alpha: flo
 
 
 def test_vol_multiplier_increases_var():
+    # Scenario: increasing volatility (m > 1) should increase VaR magnitude.
     mu = pd.Series([0.0, 0.0], index=["AAA", "BBB"])
     sigma = pd.DataFrame(
         [[0.04, 0.0], [0.0, 0.09]],
@@ -90,6 +95,7 @@ def test_vol_multiplier_increases_var():
 
 
 def test_corr_spike_increases_var():
+    # Scenario: increasing correlation should increase portfolio VaR.
     mu = pd.Series([0.0, 0.0], index=["AAA", "BBB"])
     sigma = pd.DataFrame(
         [[0.04, 0.0], [0.0, 0.04]],
