@@ -1,3 +1,4 @@
+from pydantic import ConfigDict, field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -9,8 +10,14 @@ class Settings(BaseSettings):
     data_dir: str = "./data"
     cache_dir: str = "./data/cache"
 
-    class Config:
-        env_file = ".env"
+    model_config = ConfigDict(env_file=".env")
+
+    @field_validator("debug", mode="before")
+    @classmethod
+    def parse_debug(cls, value):
+        if isinstance(value, str) and value.lower() == "release":
+            return False
+        return value
 
 
 settings = Settings()

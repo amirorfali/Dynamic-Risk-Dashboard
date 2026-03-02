@@ -2,7 +2,12 @@ import numpy as np
 import pandas as pd
 
 # Core data pipeline utilities under test.
-from app.core.data import calibrate_mu_sigma, compute_returns, ensure_psd, load_prices_csv
+from app.core.data import (
+    calibrate_mu_sigma,
+    compute_returns,
+    ensure_psd,
+    load_prices_csv,
+)
 
 
 def _write_prices_csv(path):

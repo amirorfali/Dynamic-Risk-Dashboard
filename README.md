@@ -2,6 +2,9 @@
 
 FastAPI + Streamlit system for classical and quantum risk analysis.
 
+API contract:
+- `docs/api_contract.md`
+
 ## Setup
 
 ```bash
@@ -25,7 +28,24 @@ Press enter if it asks for email. It starts the Streamlit development server and
 
 Tests:
 ```bash
-pytest -q
+./venv/bin/pytest -q
+./venv/bin/ruff check .
+./venv/bin/black --check .
+```
+What they do:
+- `pytest`: runs unit tests covering the data pipeline and scenario engine behavior.
+- `ruff check .`: static linting for errors, style, and import order.
+- `black --check .`: verifies formatting matches the project style.
+
+Makefile shortcuts:
+```bash
+make setup
+make test
+make lint
+make fmt
+make fmt-check
+make run-api
+make run-dashboard
 ```
 
 ## Data + calibration

@@ -12,14 +12,18 @@ class ScenarioResult:
     sigma: pd.DataFrame
 
 
-def apply_vol_multiplier(mu: pd.Series, sigma: pd.DataFrame, m: float) -> ScenarioResult:
+def apply_vol_multiplier(
+    mu: pd.Series, sigma: pd.DataFrame, m: float
+) -> ScenarioResult:
     if m <= 0:
         raise ValueError("Vol multiplier must be positive")
     scaled = sigma * (m**2)
     return ScenarioResult(mu=mu.copy(), sigma=scaled)
 
 
-def apply_mean_shock(mu: pd.Series, sigma: pd.DataFrame, delta_mu: pd.Series) -> ScenarioResult:
+def apply_mean_shock(
+    mu: pd.Series, sigma: pd.DataFrame, delta_mu: pd.Series
+) -> ScenarioResult:
     if not mu.index.equals(delta_mu.index):
         raise ValueError("delta_mu must share the same index as mu")
     shocked = mu + delta_mu
@@ -51,7 +55,10 @@ def apply_corr_spike(
     np.fill_diagonal(blended, 1.0)
 
     spiked = blended * np.outer(std, std)
-    return ScenarioResult(mu=mu.copy(), sigma=pd.DataFrame(spiked, index=sigma.index, columns=sigma.columns))
+    return ScenarioResult(
+        mu=mu.copy(),
+        sigma=pd.DataFrame(spiked, index=sigma.index, columns=sigma.columns),
+    )
 
 
 def apply_crash_mixture(

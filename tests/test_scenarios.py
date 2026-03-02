@@ -49,9 +49,8 @@ def _norm_ppf(p: float) -> float:
 
     if p < plow:
         q = math.sqrt(-2 * math.log(p))
-        return (
-            (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5])
-            / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1)
+        return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / (
+            (((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1
         )
     if p > phigh:
         q = math.sqrt(-2 * math.log(1 - p))
@@ -69,7 +68,9 @@ def _norm_ppf(p: float) -> float:
     )
 
 
-def _portfolio_var(mu: pd.Series, sigma: pd.DataFrame, w: np.ndarray, alpha: float) -> float:
+def _portfolio_var(
+    mu: pd.Series, sigma: pd.DataFrame, w: np.ndarray, alpha: float
+) -> float:
     # One-period parametric VaR for a linear portfolio under normality.
     z = _norm_ppf(alpha)
     port_var = float(w.T @ sigma.values @ w)
