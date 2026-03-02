@@ -46,7 +46,17 @@ make fmt
 make fmt-check
 make run-api
 make run-dashboard
+make dev
 ```
+What they do:
+- `make setup`: creates the virtual environment and installs dependencies.
+- `make test`: runs the test suite with pytest.
+- `make lint`: runs ruff for linting and import order checks.
+- `make fmt`: formats code with black.
+- `make fmt-check`: verifies formatting without changing files.
+- `make run-api`: starts the FastAPI server (uvicorn).
+- `make run-dashboard`: starts the Streamlit dashboard.
+- `make dev`: starts API + dashboard together via `scripts/dev.sh`.
 
 ## Data + calibration
 

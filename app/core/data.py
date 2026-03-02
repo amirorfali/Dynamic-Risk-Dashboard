@@ -139,3 +139,37 @@ def fetch_stock_data(
         "income_statement": income_stmt,
         "balance_sheet": balance_sheet,
     }
+
+
+def fetch_prices_yfinance(
+    tickers: Iterable[str],
+    period: str = "1y",
+) -> pd.DataFrame:
+    symbols = list(tickers)
+    if not symbols:
+        raise ValueError("Tickers list is empty")
+
+    data = yf.download(
+        tickers=" ".join(symbols),
+        period=period,
+        group_by="column",
+        auto_adjust=False,
+        progress=False,
+    )
+    if data.empty:
+        raise ValueError("No data returned from yfinance")
+
+    if isinstance(data.columns, pd.MultiIndex):
+        if "Close" not in data.columns.levels[0]:
+            raise ValueError("Close prices not found in yfinance response")
+        prices = data["Close"].copy()
+    else:
+        if "Close" not in data.columns:
+            raise ValueError("Close prices not found in yfinance response")
+        prices = data[["Close"]].copy()
+        prices.columns = symbols
+
+    prices = prices.dropna(how="all")
+    if prices.empty:
+        raise ValueError("No valid close prices after cleaning")
+    return prices

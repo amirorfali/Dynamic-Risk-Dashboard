@@ -44,7 +44,7 @@ Response body JSON schema:
 ```json
 {
   "type": "object",
-  "required": ["var", "cvar"],
+  "required": ["var", "cvar", "mean", "vol", "histogram", "backend"],
   "properties": {
     "var": {
       "type": "number",
@@ -53,6 +53,55 @@ Response body JSON schema:
     "cvar": {
       "type": "number",
       "description": "Conditional Value at Risk for the requested horizon."
+    },
+    "mean": {
+      "type": "number",
+      "description": "Mean loss over the horizon."
+    },
+    "vol": {
+      "type": "number",
+      "description": "Loss volatility over the horizon."
+    },
+    "histogram": {
+      "type": "object",
+      "required": ["bin_edges", "counts"],
+      "properties": {
+        "bin_edges": {
+          "type": "array",
+          "items": { "type": "number" }
+        },
+        "counts": {
+          "type": "array",
+          "items": { "type": "integer" }
+        }
+      }
+    },
+    "backend": {
+      "type": "object",
+      "required": [
+        "runtime_ms",
+        "n_paths",
+        "model",
+        "cache_hit",
+        "data_source",
+        "window_days"
+      ],
+      "properties": {
+        "runtime_ms": { "type": "number" },
+        "n_paths": { "type": "integer" },
+        "model": { "type": "string" },
+        "cache_hit": { "type": "boolean" },
+        "data_source": { "type": "string" },
+        "window_days": { "type": ["integer", "null"] },
+        "crash_params": {
+          "type": ["object", "null"],
+          "properties": {
+            "pc": { "type": "number" },
+            "mean_shift": { "type": "number" },
+            "vol_jump": { "type": "number" }
+          }
+        }
+      }
     }
   },
   "additionalProperties": false
@@ -76,7 +125,22 @@ Example response:
 ```json
 {
   "var": 0.0,
-  "cvar": 0.0
+  "cvar": 0.0,
+  "mean": 0.0,
+  "vol": 0.0,
+  "histogram": {
+    "bin_edges": [0.0, 0.1, 0.2],
+    "counts": [10, 5]
+  },
+  "backend": {
+    "runtime_ms": 12.3,
+    "n_paths": 5000,
+    "model": "normal",
+    "cache_hit": false,
+    "data_source": "yfinance",
+    "window_days": 252,
+    "crash_params": null
+  }
 }
 ```
 

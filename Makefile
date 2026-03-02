@@ -1,4 +1,4 @@
-.PHONY: help setup test lint fmt fmt-check run-api run-dashboard
+.PHONY: help setup test lint fmt fmt-check run-api run-dashboard dev
 
 VENV := ./venv
 PYTHON := $(VENV)/bin/python
@@ -16,6 +16,7 @@ help:
 	@echo "  fmt-check     Verify formatting with black"
 	@echo "  run-api       Start FastAPI server"
 	@echo "  run-dashboard Start Streamlit dashboard"
+	@echo "  dev           Start API + dashboard together"
 
 setup:
 	python -m venv $(VENV)
@@ -38,3 +39,6 @@ run-api:
 
 run-dashboard:
 	$(PYTHON) -m streamlit run dashboard/streamlit_app.py
+
+dev:
+	./scripts/dev.sh
