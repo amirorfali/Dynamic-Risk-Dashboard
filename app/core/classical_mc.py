@@ -75,8 +75,10 @@ def compute_nested_risk_metrics(
     sigma: pd.DataFrame,
     weights: np.ndarray,
     horizon_days: int,
-    n_outer: int = 500,
+    #These will control how many sims we run
+    n_outer: int = 500, 
     n_inner: int = 1000,
+    #These are market conditions we should pay around with and perhaps let the user choose
     alpha: float = 0.99,
     drift_uncertainty: float = 0.002,
     vol_of_vol: float = 0.20,
