@@ -1,11 +1,21 @@
 import json
 from datetime import datetime
+from math import log2
+from pathlib import Path
+import sys
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
+from app.core.quantum_ae import iqae_simulator_from_probs
 
 st.set_page_config(page_title="Risk Dashboard", layout="wide")
 
@@ -66,6 +76,31 @@ with left:
         index=0,
     )
     tail_threshold = st.text_input("Tail threshold (optional)", value="")
+
+    st.subheader("Stress sliders")
+    vol_multiplier = st.slider("Volatility multiplier", 0.5, 3.0, 1.0, 0.1)
+    corr_spike = st.slider("Correlation spike", 0.0, 1.0, 0.0, 0.05)
+    mean_shock = st.slider("Mean shock", -0.05, 0.05, 0.0, 0.005)
+    crash_pc = st.slider("Crash probability", 0.0, 0.2, 0.05, 0.01)
+    crash_mean_shift = st.slider("Crash mean shift", -0.1, 0.0, -0.02, 0.005)
+    crash_vol_jump = st.slider("Crash vol jump", 1.0, 5.0, 2.0, 0.1)
+
+    st.subheader("Backend toggle")
+    backend_mode = st.radio(
+        "Computation mode",
+        ["FastAPI (classical)", "FastAPI + IQAE simulator"],
+        horizontal=True,
+    )
+
+    if backend_mode == "FastAPI + IQAE simulator":
+        st.caption("IQAE uses the returned histogram and pads to power-of-two bins.")
+        iqae_shots = st.slider("IQAE shots", 500, 5000, 2000, 100)
+        iqae_max_iter = st.slider("IQAE max Grover iterations", 1, 12, 6, 1)
+        iqae_alpha = st.slider("IQAE alpha (CI)", 0.01, 0.2, 0.05, 0.01)
+    else:
+        iqae_shots = 0
+        iqae_max_iter = 0
+        iqae_alpha = 0.05
 
 
 def _parse_portfolio(raw: str) -> dict[str, float]:
@@ -190,13 +225,22 @@ with right:
             centers = [
                 (edges[i] + edges[i + 1]) / 2 for i in range(len(edges) - 1)
             ]
+            if tail_threshold.strip():
+                tail_cut = float(tail_threshold)
+            else:
+                tail_cut = data.get("var")
+            tail_mask = (
+                [c >= tail_cut for c in centers] if isinstance(tail_cut, (int, float)) else [False] * len(centers)
+            )
             chart = pd.DataFrame({"loss": centers, "count": counts})
             fig = go.Figure(
                 data=[
                     go.Bar(
                         x=chart["loss"],
                         y=chart["count"],
-                        marker_color="#38bdf8",
+                        marker_color=[
+                            "#fb7185" if is_tail else "#38bdf8" for is_tail in tail_mask
+                        ],
                         opacity=0.9,
                     )
                 ]
@@ -231,11 +275,45 @@ with right:
             )
             st.plotly_chart(fig, use_container_width=True)
 
+        st.subheader("Feasibility panel")
         weight_sum = sum(payload.get("portfolio", {}).values())
         if payload.get("portfolio"):
-            st.caption(f"Portfolio weight sum: {weight_sum:.3f}")
+            st.write(f"Portfolio weight sum: {weight_sum:.3f}")
             if abs(weight_sum - 1.0) > 0.01:
                 st.warning("Portfolio weights do not sum to 1.0.")
+        if not tail_threshold.strip():
+            st.info("Tail threshold not provided; backend defaults to VaR at 99%.")
+
+        if any([vol_multiplier != 1.0, corr_spike != 0.0, mean_shock != 0.0]) or crash_pc != 0.05:
+            st.warning("Stress sliders are not wired to the backend yet.")
+
+        if backend_mode == "FastAPI + IQAE simulator" and len(counts) > 0:
+            probs = np.array(counts, dtype=float)
+            if probs.sum() > 0:
+                probs = probs / probs.sum()
+            n_bins = len(probs)
+            next_pow2 = 1 << (int(log2(n_bins - 1)) + 1) if n_bins > 1 else 1
+            if next_pow2 != n_bins:
+                st.warning(f"Histogram bins padded from {n_bins} to {next_pow2} for IQAE.")
+                probs = np.pad(probs, (0, next_pow2 - n_bins))
+                tail_mask_pad = tail_mask + [False] * (next_pow2 - n_bins)
+            else:
+                tail_mask_pad = tail_mask
+
+            iqae_result = iqae_simulator_from_probs(
+                probs=probs,
+                tail_mask=np.array(tail_mask_pad, dtype=bool),
+                shots=iqae_shots,
+                max_iter=iqae_max_iter,
+                alpha=iqae_alpha,
+                seed=11,
+            )
+            st.write(
+                "IQAE tail est/CI:",
+                f"{iqae_result.estimate:.4f}",
+                f"({iqae_result.ci_low:.4f}, {iqae_result.ci_high:.4f})",
+            )
+            st.write("IQAE resources:", iqae_result.resources)
 
         if crash_params:
             st.subheader("Crash Mixture Parameters")

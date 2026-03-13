@@ -18,6 +18,7 @@ class QubitDiscretization:
     bin_centers: list[float]
     counts: list[int]
     probabilities: list[float]
+    tail_mask: list[bool]
     basis_states: list[str]
     samples: int
 
@@ -49,6 +50,9 @@ def discretize_samples(
     values: np.ndarray,
     num_qubits: int,
     value_range: tuple[float, float] | None = None,
+    tail_threshold: float | None = None,
+    tail_alpha: float | None = None,
+    tail_side: str = "right",
 ) -> QubitDiscretization:
     """Bin continuous samples into 2**num_qubits intervals.
 
@@ -62,6 +66,10 @@ def discretize_samples(
         raise ValueError("values must not be empty")
     if np.any(~np.isfinite(samples)):
         raise ValueError("values must be finite")
+    if tail_alpha is not None and tail_threshold is not None:
+        raise ValueError("set at most one of tail_alpha or tail_threshold")
+    if tail_side not in {"right", "left"}:
+        raise ValueError("tail_side must be 'right' or 'left'")
 
     num_bins = 2**num_qubits
     lower, upper = _resolve_bin_range(samples, value_range)
@@ -71,6 +79,19 @@ def discretize_samples(
     bin_centers = 0.5 * (bin_edges[:-1] + bin_edges[1:])
     basis_states = [format(i, f"0{num_qubits}b") for i in range(num_bins)]
 
+    if tail_alpha is not None:
+        threshold = float(np.quantile(samples, tail_alpha))
+    else:
+        threshold = tail_threshold
+
+    if threshold is None:
+        tail_mask = np.zeros(num_bins, dtype=bool)
+    else:
+        if tail_side == "right":
+            tail_mask = bin_centers >= threshold
+        else:
+            tail_mask = bin_centers <= threshold
+
     return QubitDiscretization(
         num_qubits=num_qubits,
         num_bins=num_bins,
@@ -78,6 +99,7 @@ def discretize_samples(
         bin_centers=bin_centers.astype(float).tolist(),
         counts=counts.astype(int).tolist(),
         probabilities=probabilities.astype(float).tolist(),
+        tail_mask=tail_mask.astype(bool).tolist(),
         basis_states=basis_states,
         samples=int(samples.size),
     )
@@ -95,6 +117,9 @@ def discretize_nested_losses(
     vol_of_vol: float = 0.20,
     seed: int = 42,
     value_range: tuple[float, float] | None = None,
+    tail_threshold: float | None = None,
+    tail_alpha: float | None = None,
+    tail_side: str = "right",
 ) -> QubitDiscretization:
     """Run nested Monte Carlo and discretize the resulting loss distribution."""
     losses = simulate_nested_losses(
@@ -112,4 +137,44 @@ def discretize_nested_losses(
         values=losses,
         num_qubits=num_qubits,
         value_range=value_range,
+        tail_threshold=tail_threshold,
+        tail_alpha=tail_alpha,
+        tail_side=tail_side,
     )
+
+
+def estimate_binning_error(
+    values: np.ndarray,
+    num_qubits: int,
+    value_range: tuple[float, float] | None = None,
+    repeats: int = 20,
+    sample_frac: float = 0.8,
+    seed: int = 0,
+) -> dict[str, float]:
+    """Estimate binning instability via bootstrap resampling (L1 distance)."""
+    if repeats <= 0:
+        raise ValueError("repeats must be positive")
+    if not (0.0 < sample_frac <= 1.0):
+        raise ValueError("sample_frac must be in (0, 1]")
+
+    samples = np.asarray(values, dtype=float).reshape(-1)
+    if samples.size == 0:
+        raise ValueError("values must not be empty")
+
+    rng = np.random.default_rng(seed)
+    base = discretize_samples(samples, num_qubits, value_range=value_range)
+    base_probs = np.asarray(base.probabilities, dtype=float)
+
+    l1_values: list[float] = []
+    n_pick = max(1, int(sample_frac * samples.size))
+    for _ in range(repeats):
+        idx = rng.choice(samples.size, size=n_pick, replace=True)
+        resample = discretize_samples(samples[idx], num_qubits, value_range=value_range)
+        resample_probs = np.asarray(resample.probabilities, dtype=float)
+        l1_values.append(float(np.abs(resample_probs - base_probs).sum()))
+
+    return {
+        "mean_l1": float(np.mean(l1_values)),
+        "std_l1": float(np.std(l1_values, ddof=1)) if len(l1_values) > 1 else 0.0,
+        "repeats": float(repeats),
+    }

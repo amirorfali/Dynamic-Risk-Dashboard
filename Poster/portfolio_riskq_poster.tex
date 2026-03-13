@@ -1,0 +1,218 @@
+% Portfolio RiskQ Poster
+\documentclass[final]{beamer}
+
+\usepackage[size=custom,width=121.92,height=91.44,scale=1.0]{beamerposter}
+\usetheme{default}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\setbeamertemplate{caption}[numbered]
+\setlist{nosep,leftmargin=1.6em}
+
+% Amber-purple palette (background + logo purple bar style)
+\definecolor{AmberPurple}{HTML}{EDE9FF}
+\definecolor{LogoPurple}{HTML}{813fcc}
+\definecolor{BlockBorder}{HTML}{7061EA}
+\definecolor{BlockBG}{HTML}{FFFFFF}
+\definecolor{TextDark}{HTML}{000000}
+
+\setbeamercolor{normal text}{fg=TextDark,bg=AmberPurple}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block title}{fg=white,bg=LogoPurple}
+\setbeamercolor{block body}{fg=TextDark,bg=BlockBG}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% Ombre background (top white to bottom purple)
+\setbeamertemplate{background}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \path[shade, top color=white, bottom color=AmberPurple]
+      (current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}
+}
+
+\graphicspath{{../poster/}}
+
+% Title bar similar to the example
+\setbeamertemplate{headline}{
+  \vspace{0.8cm}
+  \begin{center}
+  \begin{tikzpicture}
+    \node[draw=LogoPurple,fill=LogoPurple,rounded corners=10pt,line width=0pt,inner sep=14pt,minimum width=0.93\paperwidth] {
+      \begin{minipage}{0.9\paperwidth}
+        \centering
+        {\Large\bfseries Portfolio RiskQ}\\[0.2cm]
+        {\large Classical-to-Quantum Tail Risk Estimation}\\[0.2cm]
+        {\large Emily Berlinghoff \quad Amir Orfali}\\[0.1cm]
+        {\normalsize Western University \quad Western Quantum Club}
+      \end{minipage}
+    };
+    \node[anchor=north west] at ($(current bounding box.north west)+(0.6cm,-0.2cm)$)
+      {\includegraphics[height=2.6cm]{wqc.png}};
+    \node[anchor=north east] at ($(current bounding box.north east)+(-0.6cm,-0.2cm)$)
+      {\includegraphics[height=2.6cm]{uwo.png}};
+  \end{tikzpicture}
+  \end{center}
+  \vspace{0.6cm}
+}
+
+\begin{document}
+\begin{frame}[t]
+\begin{columns}[t,totalwidth=\linewidth]
+
+% Left column
+\begin{column}{0.32\linewidth}
+\begin{block}{Introduction}
+\begin{itemize}
+    \item Portfolio risk requires accurate tail estimates (VaR/CVaR).
+    \item Classical Monte Carlo is robust but costly at scale.
+    \item Portfolio RiskQ explores a classical-to-quantum workflow.
+\end{itemize}
+\end{block}
+
+\begin{block}{Condensed Abstract}
+We build an end-to-end pipeline to estimate portfolio tail risk, spanning data calibration, stress scenarios, nested Monte Carlo, discretization into $2^n$ bins, and an IQAE simulator that estimates tail probability with confidence intervals.
+\end{block}
+
+\begin{block}{Background}
+\begin{itemize}
+    \item Risk metrics: VaR and CVaR summarize tail behavior.
+    \item Quantum amplitude estimation can reduce sampling cost.
+    \item Discretization is the bridge between classical and quantum steps.
+\end{itemize}
+\end{block}
+
+\begin{block}{Hypothesis}
+IQAE-style estimation on discretized loss distributions can approximate tail probability with fewer effective samples while preserving interpretability.
+\end{block}
+
+\begin{block}{Objectives/Purpose}
+\begin{itemize}
+    \item Build a working classical risk engine and dashboard MVP.
+    \item Add discretization and tail-mask generation.
+    \item Deliver a small-scale IQAE simulator with resource reporting.
+\end{itemize}
+\end{block}
+
+\begin{block}{Research}
+\begin{itemize}
+    \item Literature review of VaR/CVaR and nested Monte Carlo.
+    \item IQAE fundamentals and Grover iteration behavior.
+    \item Practical constraints for near-term quantum workflows.
+\end{itemize}
+\end{block}
+\end{column}
+
+% Middle column
+\begin{column}{0.36\linewidth}
+\begin{block}{Materials}
+\begin{itemize}
+    \item Python, NumPy, Pandas.
+    \item FastAPI backend and Streamlit dashboard.
+    \item Plotly for visualization.
+\end{itemize}
+\end{block}
+
+\begin{block}{Methodology}
+\textbf{Nested Monte Carlo (loss samples)}
+\begin{align*}
+    r \sim \mathcal{N}(\mu,\Sigma), \quad L = -w^\top r
+\end{align*}
+\textbf{Tail metrics}
+\begin{align*}
+    \text{VaR}_{\alpha} &= Q_{\alpha}(L) \\
+    \text{CVaR}_{\alpha} &= \mathbb{E}[L \mid L \ge \text{VaR}_{\alpha}]
+\end{align*}
+\vspace{0.4em}
+\textbf{Discretization}
+\begin{itemize}
+    \item Bin losses into $2^n$ intervals.
+    \item Produce edges, probabilities, tail mask.
+\end{itemize}
+\vspace{0.4em}
+\textbf{IQAE (simulator)}
+\begin{align*}
+    p &= \sin^2(\theta), \quad p_m = \sin^2((2m+1)\theta)
+\end{align*}
+\end{block}
+
+\begin{block}{Analysis}
+\begin{itemize}
+    \item Validate probability normalization and tail-mask correctness.
+    \item Compare IQAE estimates to true tail probability on toy data.
+    \item Track resource usage (qubits, depth, 2Q gates, oracle calls).
+\end{itemize}
+\end{block}
+
+\begin{block}{Models}
+\begin{itemize}
+    \item Gaussian return model; optional crash-mixture scenario.
+    \item Nested Monte Carlo for regime uncertainty.
+    \item Histogram-based discretization for quantum mapping.
+\end{itemize}
+\end{block}
+
+\begin{block}{Results}
+\begin{itemize}
+    \item Discretization tests pass (prob sums to 1, mask correctness).
+    \item IQAE toy test estimates match true tail probability.
+    \item Dashboard shows VaR/CVaR and tail-highlighted histogram.
+\end{itemize}
+\end{block}
+\end{column}
+
+% Right column
+\begin{column}{0.32\linewidth}
+\begin{block}{Discussion}
+\begin{itemize}
+    \item Discretization provides a stable bridge to IQAE.
+    \item Simulator results align with expected tail probabilities.
+    \item Stress sliders need full backend integration.
+\end{itemize}
+\end{block}
+
+\begin{block}{Implications}
+\begin{itemize}
+    \item Feasible path to hybrid classical-quantum risk pipelines.
+    \item Resource reports inform near-term quantum limits.
+\end{itemize}
+\end{block}
+
+\begin{block}{Conclusion}
+Portfolio RiskQ demonstrates an end-to-end workflow from classical risk estimation to quantum-ready tail probability estimation using IQAE.
+\end{block}
+
+\begin{block}{Recommendations}
+\begin{itemize}
+    \item Integrate stress sliders into the backend risk engine.
+    \item Expand to larger portfolios and longer horizons.
+    \item Prototype state-preparation circuits for real data.
+\end{itemize}
+\end{block}
+
+\begin{block}{Conclusion}
+The current MVP validates feasibility of a classical-to-quantum pipeline and establishes a foundation for future quantum execution.
+\end{block}
+
+\begin{block}{Acknowledgements}
+Thanks to Western Quantum Club and Western University.
+\end{block}
+
+\begin{block}{Contact Information}
+\begin{itemize}
+    \item Email: \texttt{aorfali2@uwo.ca \quad eberling@uwo.ca}
+    \item GitHub: \texttt{https://github.com/amirorfali/Dynamic-Risk-Dashboard}
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+\end{frame}
+\end{document}

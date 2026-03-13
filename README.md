@@ -22,9 +22,34 @@ FastAPI API server:
 
 Streamlit dashboard:
 ```bash
-streamlit run dashboard/streamlit_app.py
+./venv/bin/streamlit run dashboard/streamlit_app.py
 ```
 Press enter if it asks for email. It starts the Streamlit development server and opens the dashboard defined in `streamlit_app.py` in your browser.
+Note: the stress sliders are UI-only right now and do not affect backend results.
+
+## Quick start (classical → discretization → IQAE)
+
+```bash
+./venv/bin/python - <<'PY'
+import numpy as np
+import pandas as pd
+
+from app.core.classical_mc import simulate_nested_losses
+from app.core.discretization import discretize_samples
+from app.core.quantum_ae import iqae_from_discretization
+
+mu = pd.Series([0.001, 0.002], index=["A", "B"])
+sigma = pd.DataFrame([[0.01, 0.002], [0.002, 0.015]], index=mu.index, columns=mu.index)
+weights = np.array([0.6, 0.4], dtype=float)
+
+losses = simulate_nested_losses(mu, sigma, weights, horizon_days=5, n_outer=10, n_inner=200, seed=7)
+disc = discretize_samples(values=losses, num_qubits=5, tail_threshold=0.02)
+result = iqae_from_discretization(disc, np.array(disc.tail_mask), shots=2000, max_iter=6, seed=11)
+
+print("tail true/est/ci:", result.true_prob, result.estimate, (result.ci_low, result.ci_high))
+print("resources:", result.resources)
+PY
+```
 
 Tests:
 ```bash
@@ -85,3 +110,54 @@ Features:
 Main files:
 - `app/core/scenarios.py`
 - `tests/test_scenarios.py`
+
+## Discretization (bridge to quantum)
+
+Features:
+- Convert loss samples to `2**n` bins with edges + probabilities.
+- Tail mask generation using a threshold or quantile.
+- Optional binning error estimate via bootstrap resampling.
+- Unit tests for probability sums and tail-mask correctness.
+
+Main files:
+- `app/core/discretization.py`
+- `tests/test_discretization.py`
+
+Manual test (discretization):
+```bash
+./venv/bin/python scripts/manual_test_discretization.py
+```
+Expected output (example):
+```
+edges: 9 probs: 1.0 tail: 3
+binning_error: {'mean_l1': 0.28181818181818186, 'std_l1': 0.09588646868058631, 'repeats': 5.0}
+```
+
+## Quantum IQAE MVP (simulator)
+
+Features:
+- Toy histogram path to verify IQAE estimation.
+- Discretized histogram path with tail mask + amplitude prep from probabilities.
+- IQAE simulator returns estimate + confidence interval.
+- Resource report (qubits, depth, 2Q gates, oracle calls, iterations).
+
+Main files:
+- `app/core/quantum_ae.py`
+- `tests/test_quantum_ae.py`
+
+Manual test (IQAE):
+```bash
+./venv/bin/python scripts/manual_test_iqae.py
+```
+Expected output (example):
+```
+toy true/est/ci: 0.15 0.14896479745088195 (0.14752600415773548, 0.15040359074402843)
+disc true/est/ci: 0.25000000000000006 0.25066497747546435 (0.2484089898138266, 0.2529209651371021)
+resources: ResourceReport(n_qubits=6, depth=228, two_qubit_gates=164, oracle_calls=7, iterations=7)
+```
+
+Grover iteration (intuition):
+- State preparation `A` encodes the “good” (tail) probability `p`.
+- Grover operator `Q` rotates amplitude toward good states.
+- After `m` iterations, good probability is `sin^2((2m+1) * θ)` where `θ = arcsin(sqrt(p))`.
+- IQAE probes multiple `m` values to infer `p` efficiently from measurements.
