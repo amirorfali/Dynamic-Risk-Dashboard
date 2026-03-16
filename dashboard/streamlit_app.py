@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-from math import log2
 from pathlib import Path
 import sys
 from urllib.error import HTTPError, URLError
@@ -9,13 +8,9 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-import numpy as np
-
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
-
-from app.core.quantum_ae import iqae_simulator_from_probs
 
 st.set_page_config(page_title="Risk Dashboard", layout="wide")
 
@@ -88,19 +83,9 @@ with left:
     st.subheader("Backend toggle")
     backend_mode = st.radio(
         "Computation mode",
-        ["FastAPI (classical)", "FastAPI + IQAE simulator"],
+        ["Classical", "Quantum (IQAE)"],
         horizontal=True,
     )
-
-    if backend_mode == "FastAPI + IQAE simulator":
-        st.caption("IQAE uses the returned histogram and pads to power-of-two bins.")
-        iqae_shots = st.slider("IQAE shots", 500, 5000, 2000, 100)
-        iqae_max_iter = st.slider("IQAE max Grover iterations", 1, 12, 6, 1)
-        iqae_alpha = st.slider("IQAE alpha (CI)", 0.01, 0.2, 0.05, 0.01)
-    else:
-        iqae_shots = 0
-        iqae_max_iter = 0
-        iqae_alpha = 0.05
 
 
 def _parse_portfolio(raw: str) -> dict[str, float]:
@@ -120,6 +105,7 @@ payload = {
     "portfolio": {},
     "horizon_days": int(horizon_days),
     "return_model": return_model,
+    "backend": "quantum" if backend_mode == "Quantum (IQAE)" else "classical",
 }
 if tail_threshold.strip():
     payload["tail_threshold"] = float(tail_threshold)
@@ -225,9 +211,8 @@ with right:
             centers = [
                 (edges[i] + edges[i + 1]) / 2 for i in range(len(edges) - 1)
             ]
-            if tail_threshold.strip():
-                tail_cut = float(tail_threshold)
-            else:
+            tail_cut = data.get("tail_threshold")
+            if not isinstance(tail_cut, (int, float)):
                 tail_cut = data.get("var")
             tail_mask = (
                 [c >= tail_cut for c in centers] if isinstance(tail_cut, (int, float)) else [False] * len(centers)
@@ -287,33 +272,50 @@ with right:
         if any([vol_multiplier != 1.0, corr_spike != 0.0, mean_shock != 0.0]) or crash_pc != 0.05:
             st.warning("Stress sliders are not wired to the backend yet.")
 
-        if backend_mode == "FastAPI + IQAE simulator" and len(counts) > 0:
-            probs = np.array(counts, dtype=float)
-            if probs.sum() > 0:
-                probs = probs / probs.sum()
-            n_bins = len(probs)
-            next_pow2 = 1 << (int(log2(n_bins - 1)) + 1) if n_bins > 1 else 1
-            if next_pow2 != n_bins:
-                st.warning(f"Histogram bins padded from {n_bins} to {next_pow2} for IQAE.")
-                probs = np.pad(probs, (0, next_pow2 - n_bins))
-                tail_mask_pad = tail_mask + [False] * (next_pow2 - n_bins)
-            else:
-                tail_mask_pad = tail_mask
+        quantum = data.get("quantum")
+        if backend_mode == "Quantum (IQAE)" and quantum:
+            tail_prob = quantum.get("tail_prob")
+            estimate = quantum.get("estimate")
+            ci_low = quantum.get("ci_low")
+            ci_high = quantum.get("ci_high")
+            diff_abs = quantum.get("diff_abs")
+            diff_rel = quantum.get("diff_rel")
+            padded_bins = quantum.get("padded_bins")
+            n_bins = quantum.get("n_bins")
 
-            iqae_result = iqae_simulator_from_probs(
-                probs=probs,
-                tail_mask=np.array(tail_mask_pad, dtype=bool),
-                shots=iqae_shots,
-                max_iter=iqae_max_iter,
-                alpha=iqae_alpha,
-                seed=11,
+            if padded_bins and n_bins and padded_bins != n_bins:
+                st.warning(f"Histogram bins padded from {n_bins} to {padded_bins} for IQAE.")
+
+            st.subheader("Classical vs Quantum")
+            comp_cols = st.columns(3)
+            classical_display = "—" if tail_prob is None else f"{tail_prob:.4f}"
+            quantum_display = "—"
+            if estimate is not None and ci_low is not None and ci_high is not None:
+                quantum_display = f"{estimate:.4f} ({ci_low:.4f}, {ci_high:.4f})"
+            diff_abs_display = "—" if diff_abs is None else f"{diff_abs:.4f}"
+            diff_rel_display = "—" if diff_rel is None else f"{diff_rel:.2%}"
+
+            comp_cols[0].markdown(
+                f"<div class='metric-card'>"
+                f"<div class='metric-label'>Classical Tail Prob</div>"
+                f"<div class='metric-value'>{classical_display}</div>"
+                f"</div>",
+                unsafe_allow_html=True,
             )
-            st.write(
-                "IQAE tail est/CI:",
-                f"{iqae_result.estimate:.4f}",
-                f"({iqae_result.ci_low:.4f}, {iqae_result.ci_high:.4f})",
+            comp_cols[1].markdown(
+                f"<div class='metric-card'>"
+                f"<div class='metric-label'>IQAE Estimate (CI)</div>"
+                f"<div class='metric-value'>{quantum_display}</div>"
+                f"</div>",
+                unsafe_allow_html=True,
             )
-            st.write("IQAE resources:", iqae_result.resources)
+            comp_cols[2].markdown(
+                f"<div class='metric-card'>"
+                f"<div class='metric-label'>Abs / Rel Diff</div>"
+                f"<div class='metric-value'>{diff_abs_display} | {diff_rel_display}</div>"
+                f"</div>",
+                unsafe_allow_html=True,
+            )
 
         if crash_params:
             st.subheader("Crash Mixture Parameters")

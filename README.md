@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ## Run
 
 FastAPI API server:
-- `uvicorn app.main:app --reload`
+- `./venv/bin/uvicorn app.main:app --reload`
 - `http://127.0.0.1:8000/docs` docs provides the interactive Swagger UI for trying endpoints in the browser
 - `http://127.0.0.1:8000/redoc` redoc provides the static ReDoc reference docs for the same API schema
 
@@ -26,6 +26,35 @@ Streamlit dashboard:
 ```
 Press enter if it asks for email. It starts the Streamlit development server and opens the dashboard defined in `streamlit_app.py` in your browser.
 Note: the stress sliders are UI-only right now and do not affect backend results.
+
+Backend toggle example (classical vs quantum):
+```json
+{
+  "portfolio": { "AAPL": 0.5, "MSFT": 0.3, "GOOGL": 0.2 },
+  "horizon_days": 10,
+  "return_model": "normal",
+  "backend": "quantum",
+  "tail_threshold": 0.02
+}
+```
+Example response fields (truncated):
+```json
+{
+  "var": 0.1095,
+  "cvar": 0.1271,
+  "tail_threshold": 0.02,
+  "histogram": { "bin_edges": [0.0, 0.01], "counts": [12] },
+  "backend": { "backend": "quantum", "runtime_ms": 10.8 },
+  "quantum": {
+    "tail_prob": 0.15,
+    "estimate": 0.1490,
+    "ci_low": 0.1475,
+    "ci_high": 0.1504,
+    "diff_abs": 0.0010,
+    "diff_rel": 0.0067
+  }
+}
+```
 
 ## Quick start (classical → discretization → IQAE)
 

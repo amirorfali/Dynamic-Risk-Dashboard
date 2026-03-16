@@ -1,4 +1,5 @@
 from time import perf_counter
+from math import log2
 
 import numpy as np
 import pandas as pd
@@ -7,6 +8,7 @@ from fastapi import APIRouter, HTTPException
 from app.api.schemas import RiskRequest, RiskResponse
 from app.core.cache import get_calibration
 from app.core.engine import compute_risk_metrics
+from app.core.quantum_ae import iqae_simulator_from_probs
 from app.core.scenarios import apply_crash_mixture
 
 router = APIRouter()
@@ -62,23 +64,78 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
         tail_threshold=payload.tail_threshold,
     )
     runtime_ms = (perf_counter() - start) * 1000.0
+    tail_threshold = metrics.var if payload.tail_threshold is None else float(payload.tail_threshold)
+
+    histogram = {
+        "bin_edges": metrics.histogram.bin_edges,
+        "counts": metrics.histogram.counts,
+    }
+
+    quantum_payload = None
+    if payload.backend == "quantum":
+        edges = np.asarray(metrics.histogram.bin_edges, dtype=float)
+        counts = np.asarray(metrics.histogram.counts, dtype=float)
+        centers = 0.5 * (edges[:-1] + edges[1:]) if edges.size >= 2 else np.array([])
+        total = float(counts.sum())
+        tail_mask = centers >= tail_threshold if centers.size else np.array([], dtype=bool)
+        tail_prob = float(counts[tail_mask].sum() / total) if total > 0 else None
+
+        probs = counts / total if total > 0 else counts
+        n_bins = int(probs.size)
+        if n_bins <= 0:
+            padded_bins = 0
+        else:
+            padded_bins = 1 << (int(log2(n_bins - 1)) + 1) if n_bins > 1 else 1
+        if padded_bins > n_bins:
+            probs = np.pad(probs, (0, padded_bins - n_bins))
+            tail_mask = np.pad(tail_mask, (0, padded_bins - n_bins), constant_values=False)
+
+        iqae = None
+        if probs.size > 0 and probs.sum() > 0:
+            iqae = iqae_simulator_from_probs(
+                probs=probs,
+                tail_mask=tail_mask.astype(bool),
+                shots=2000,
+                max_iter=6,
+                alpha=0.05,
+                seed=11,
+            )
+
+        estimate = iqae.estimate if iqae else None
+        ci_low = iqae.ci_low if iqae else None
+        ci_high = iqae.ci_high if iqae else None
+        diff_abs = abs(estimate - tail_prob) if estimate is not None and tail_prob is not None else None
+        diff_rel = (diff_abs / tail_prob) if diff_abs is not None and tail_prob not in (None, 0.0) else None
+
+        quantum_payload = {
+            "tail_prob": tail_prob,
+            "estimate": estimate,
+            "ci_low": ci_low,
+            "ci_high": ci_high,
+            "diff_abs": diff_abs,
+            "diff_rel": diff_rel,
+            "n_bins": n_bins,
+            "padded_bins": padded_bins,
+            "shots": 2000,
+            "max_iter": 6,
+        }
 
     return RiskResponse(
         var=metrics.var,
         cvar=metrics.cvar,
         mean=metrics.mean,
         vol=metrics.vol,
-        histogram={
-            "bin_edges": metrics.histogram.bin_edges,
-            "counts": metrics.histogram.counts,
-        },
+        tail_threshold=tail_threshold,
+        histogram=histogram,
         backend={
             "runtime_ms": runtime_ms,
             "n_paths": 5000,
             "model": model,
+            "backend": payload.backend,
             "cache_hit": cached.cache_hit,
             "data_source": "yfinance",
             "window_days": 252,
             "crash_params": crash_params,
         },
+        quantum=quantum_payload,
     )

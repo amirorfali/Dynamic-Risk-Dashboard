@@ -12,7 +12,7 @@
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,positioning}
 
 \setbeamertemplate{caption}[numbered]
 \setlist{nosep,leftmargin=1.6em}
@@ -29,6 +29,25 @@
 \setbeamercolor{block title}{fg=white,bg=LogoPurple}
 \setbeamercolor{block body}{fg=TextDark,bg=BlockBG}
 \setbeamertemplate{blocks}[rounded][shadow=false]
+% Add vertical padding to avoid clipped block titles
+\setbeamertemplate{block title}{\vspace{0.7ex}\insertblocktitle\strut\par\vspace{0.7ex}}
+% Add vertical/side padding to block bodies while preserving purple title bars
+\setbeamertemplate{block begin}{
+  \par\vskip\medskipamount
+  \begin{beamercolorbox}[colsep*=0.75ex,rounded=true,leftskip=0.8em,rightskip=0.8em,sep=0.5ex]{block title}
+    \usebeamerfont{block title}\insertblocktitle\strut
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[colsep*=0.75ex,rounded=true,leftskip=0.8em,rightskip=0.8em,sep=0.8ex]{block body}
+}
+\setbeamertemplate{block end}{
+  \end{beamercolorbox}
+  \par\vskip\smallskipamount
+}
+% Make bullets visible and readable
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setlist[itemize]{leftmargin=2.2em,label=\textcolor{LogoPurple}{\large$\blacktriangleright$}}
+\setlist[itemize,2]{leftmargin=2.2em,label=\textcolor{LogoPurple}{\normalsize$\bullet$}}
 
 % Ombre background (top white to bottom purple)
 \setbeamertemplate{background}{
@@ -54,10 +73,10 @@
         {\normalsize Western University \quad Western Quantum Club}
       \end{minipage}
     };
-    \node[anchor=north west] at ($(current bounding box.north west)+(0.6cm,-0.2cm)$)
-      {\includegraphics[height=2.6cm]{wqc.png}};
-    \node[anchor=north east] at ($(current bounding box.north east)+(-0.6cm,-0.2cm)$)
-      {\includegraphics[height=2.6cm]{uwo.png}};
+    \node[anchor=west] at ($(current bounding box.west)+(0.6cm,0cm)$)
+      {\includegraphics[height=4.2cm]{wqc.png}};
+    \node[anchor=east] at ($(current bounding box.east)+(-0.6cm,0cm)$)
+      {\includegraphics[height=4.2cm]{uwo.png}};
   \end{tikzpicture}
   \end{center}
   \vspace{0.6cm}
@@ -70,35 +89,43 @@
 % Left column
 \begin{column}{0.32\linewidth}
 \begin{block}{Introduction}
-\begin{itemize}
-    \item Portfolio risk requires accurate tail estimates (VaR/CVaR).
-    \item Classical Monte Carlo is robust but costly at scale.
-    \item Portfolio RiskQ explores a classical-to-quantum workflow.
-\end{itemize}
+Portfolio risk requires accurate tail estimates such as VaR and CVaR, yet production systems must balance accuracy with compute cost. Portfolio RiskQ explores a classical-to-quantum workflow that preserves interpretability while opening a path to faster tail estimation.
 \end{block}
 
 \begin{block}{Condensed Abstract}
-We build an end-to-end pipeline to estimate portfolio tail risk, spanning data calibration, stress scenarios, nested Monte Carlo, discretization into $2^n$ bins, and an IQAE simulator that estimates tail probability with confidence intervals.
+We built an end-to-end pipeline to estimate portfolio tail risk, spanning data calibration, stress scenarios,
+
+nested Monte Carlo, discretization into $2^n$ bins, and an IQAE simulator that estimates tail probability with confidence intervals.
 \end{block}
 
 \begin{block}{Background}
-\begin{itemize}
-    \item Risk metrics: VaR and CVaR summarize tail behavior.
-    \item Quantum amplitude estimation can reduce sampling cost.
-    \item Discretization is the bridge between classical and quantum steps.
-\end{itemize}
+VaR and CVaR summarize the loss tail that matters most to risk teams, while nested Monte Carlo provides a robust classical baseline. Quantum amplitude estimation promises a quadratic reduction in sampling complexity, but it requires discretized, quantum-ready distributions.
+\vspace{0.3em}
+Think of VaR as a “loss line you rarely cross,” and CVaR as the “average loss when you do cross it.”
+\vspace{0.3em}
+In plain language, we simulate many possible futures, summarize the worst losses, and compare a classical estimate with a quantum-inspired estimate of the same tail risk.
+\vspace{0.3em}
+We treat returns as random and generate many loss outcomes for the portfolio.
+\vspace{0.3em}
+Intuition: the quantum step is a smarter way to estimate a probability (the tail) with fewer effective samples.
+\vspace{0.3em}
+Reading the example: the tail probability is about 0.83\%, and the interval shows expected uncertainty.
+\vspace{0.3em}
+This makes the classical vs quantum comparison fair and easy to explain to non-specialists.
 \end{block}
 
 \begin{block}{Hypothesis}
-IQAE-style estimation on discretized loss distributions can approximate tail probability with fewer effective samples while preserving interpretability.
+IQAE-style estimation on discretized loss distributions can approximate tail probability with fewer effective samples while preserving interpretability for risk stakeholders.
 \end{block}
 
-\begin{block}{Objectives/Purpose}
+\begin{block}{Objectives}
 \begin{itemize}
     \item Build a working classical risk engine and dashboard MVP.
     \item Add discretization and tail-mask generation.
     \item Deliver a small-scale IQAE simulator with resource reporting.
 \end{itemize}
+\vspace{0.3em}
+The emphasis is on a complete, inspectable pipeline that supports both classical validation and quantum-oriented estimation.
 \end{block}
 
 \begin{block}{Research}
@@ -107,17 +134,24 @@ IQAE-style estimation on discretized loss distributions can approximate tail pro
     \item IQAE fundamentals and Grover iteration behavior.
     \item Practical constraints for near-term quantum workflows.
 \end{itemize}
+\vspace{0.3em}
+This framing informs where quantum methods can add value without compromising auditability.
+\end{block}
+
+\begin{block}{Models}
+\begin{itemize}
+    \item Gaussian return model; optional crash-mixture scenario.
+    \item Nested Monte Carlo for regime uncertainty.
+    \item Histogram-based discretization for quantum mapping.
+    \item Backend toggle: classical vs quantum comparison path.
+\end{itemize}
 \end{block}
 \end{column}
 
 % Middle column
 \begin{column}{0.36\linewidth}
 \begin{block}{Materials}
-\begin{itemize}
-    \item Python, NumPy, Pandas.
-    \item FastAPI backend and Streamlit dashboard.
-    \item Plotly for visualization.
-\end{itemize}
+Implementation uses Python with NumPy and Pandas for numerical work, a FastAPI backend for serving risk metrics, and a Streamlit + Plotly front end for interactive visualization.
 \end{block}
 
 \begin{block}{Methodology}
@@ -135,12 +169,17 @@ IQAE-style estimation on discretized loss distributions can approximate tail pro
 \begin{itemize}
     \item Bin losses into $2^n$ intervals.
     \item Produce edges, probabilities, tail mask.
+    \item Bootstrap error estimate for bin stability.
 \end{itemize}
 \vspace{0.4em}
 \textbf{IQAE (simulator)}
 \begin{align*}
     p &= \sin^2(\theta), \quad p_m = \sin^2((2m+1)\theta)
 \end{align*}
+\begin{itemize}
+    \item Uses Grover iteration schedule to amplify tail states.
+    \item Returns estimate with confidence interval.
+\end{itemize}
 \end{block}
 
 \begin{block}{Analysis}
@@ -148,15 +187,37 @@ IQAE-style estimation on discretized loss distributions can approximate tail pro
     \item Validate probability normalization and tail-mask correctness.
     \item Compare IQAE estimates to true tail probability on toy data.
     \item Track resource usage (qubits, depth, 2Q gates, oracle calls).
+    \item Compare classical vs quantum using same $\ell$ and histogram.
 \end{itemize}
+\vspace{0.3em}
+All comparisons share the same tail threshold $\ell$, scenario configuration, and histogram to ensure a fair baseline.
 \end{block}
 
-\begin{block}{Models}
-\begin{itemize}
-    \item Gaussian return model; optional crash-mixture scenario.
-    \item Nested Monte Carlo for regime uncertainty.
-    \item Histogram-based discretization for quantum mapping.
-\end{itemize}
+\begin{block}{System Pipeline (Schematic)}
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.2cm,
+    every node/.style={font=\small},
+    box/.style={draw=LogoPurple,rounded corners=4pt,fill=white,inner sep=4pt,minimum height=0.9cm},
+    arrow/.style={-stealth,thick,color=LogoPurple}
+]
+  \node[box] (data) {Market Data};
+  \node[box, right=of data] (calib) {Calibration $(\mu,\Sigma)$};
+  \node[box, right=of calib] (mc) {Nested MC};
+  \node[box, right=of mc] (hist) {Histogram $2^n$};
+  \node[box, right=of hist] (iqae) {IQAE};
+
+  \draw[arrow] (data) -- (calib);
+  \draw[arrow] (calib) -- (mc);
+  \draw[arrow] (mc) -- (hist);
+  \draw[arrow] (hist) -- (iqae);
+
+  \node[box, below=0.8cm of mc] (metrics) {VaR / CVaR};
+  \draw[arrow] (mc) -- (metrics);
+  \node[box, below=0.8cm of hist] (tail) {Tail Mask};
+  \draw[arrow] (hist) -- (tail);
+\end{tikzpicture}
+\end{center}
 \end{block}
 
 \begin{block}{Results}
@@ -164,37 +225,65 @@ IQAE-style estimation on discretized loss distributions can approximate tail pro
     \item Discretization tests pass (prob sums to 1, mask correctness).
     \item IQAE toy test estimates match true tail probability.
     \item Dashboard shows VaR/CVaR and tail-highlighted histogram.
+    \item Backend toggle: classical vs quantum with side-by-side comparison.
+    \item Difference fields (abs/rel error) reported in API/ UI.
 \end{itemize}
+\vspace{0.3em}
+Together these results show that the quantum comparison can be presented alongside classical metrics without changing the underlying scenario or data pipeline.
 \end{block}
 \end{column}
 
 % Right column
 \begin{column}{0.32\linewidth}
+\begin{block}{Results Snapshot}
+\begin{itemize}
+    \item Tail probability (classical) vs IQAE estimate with CI.
+    \item Histogram padding to power-of-two bins when required.
+    \item Runtime and cache indicators for reproducibility.
+    \item Example output: $\hat{p}=0.0083$ with CI $(0.0079, 0.0087)$.
+\end{itemize}
+\end{block}
+
+\begin{block}{Dashboard Visuals}
+Left panel collects portfolio inputs and stress settings; right panel reports VaR/CVaR, histogram with tail highlight, and a classical vs quantum comparison when enabled. The classical mode reports tail probability from the histogram directly, while quantum (IQAE) estimates the same tail probability with a confidence interval and reports absolute/relative error.
+\begin{center}
+\begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \textbf{Classical Backend}\\[0.2em]
+    \includegraphics[width=\linewidth]{c_dash.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \textbf{Quantum (IQAE) Backend}\\[0.2em]
+    \includegraphics[width=\linewidth]{q_dash.png}
+\end{minipage}
+\end{center}
+\end{block}
+
 \begin{block}{Discussion}
 \begin{itemize}
     \item Discretization provides a stable bridge to IQAE.
     \item Simulator results align with expected tail probabilities.
     \item Stress sliders need full backend integration.
+    \item Comparison uses same threshold $\ell$, scenario, and histogram.
+    \item Padding can affect tail resolution at small bin counts.
 \end{itemize}
+\vspace{0.3em}
+Padding effects are explicitly tracked to avoid overstating precision at small bin counts.
 \end{block}
 
 \begin{block}{Implications}
 \begin{itemize}
     \item Feasible path to hybrid classical-quantum risk pipelines.
     \item Resource reports inform near-term quantum limits.
+    \item Clear audit trail from inputs to tail estimate.
 \end{itemize}
+\vspace{0.3em}
+This enables clearer communication of quantum feasibility to non-quantum stakeholders.
 \end{block}
 
 \begin{block}{Conclusion}
-Portfolio RiskQ demonstrates an end-to-end workflow from classical risk estimation to quantum-ready tail probability estimation using IQAE.
-\end{block}
-
-\begin{block}{Recommendations}
-\begin{itemize}
-    \item Integrate stress sliders into the backend risk engine.
-    \item Expand to larger portfolios and longer horizons.
-    \item Prototype state-preparation circuits for real data.
-\end{itemize}
+Portfolio RiskQ demonstrates an end-to-end workflow from classical risk estimation to quantum-ready tail probability estimation using IQAE, with consistent inputs and transparent reporting across both modes.
 \end{block}
 
 \begin{block}{Conclusion}
