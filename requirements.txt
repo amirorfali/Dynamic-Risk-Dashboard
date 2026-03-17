@@ -10,3 +10,4 @@ black
 pytest
 streamlit
 plotly
+matplotlib

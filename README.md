@@ -190,3 +190,10 @@ Grover iteration (intuition):
 - Grover operator `Q` rotates amplitude toward good states.
 - After `m` iterations, good probability is `sin^2((2m+1) * θ)` where `θ = arcsin(sqrt(p))`.
 - IQAE probes multiple `m` values to infer `p` efficiently from measurements.
+
+## Experiments (report/demo plots)
+
+Generate all experiment plots (saved to `experiments/plots/`):
+```bash
+./venv/bin/python experiments/run_experiments.py
+```

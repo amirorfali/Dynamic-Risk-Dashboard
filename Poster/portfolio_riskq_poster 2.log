@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  17 MAR 2026 14:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  17 MAR 2026 13:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -790,33 +790,33 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 88.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 85.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count396
 \l__pdf_internal_box=\box139
-) (./portfolio_riskq_poster.aux)
+)
+No file portfolio_riskq_poster.aux.
 \openout1 = `portfolio_riskq_poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -870,60 +870,59 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 88.
- (./portfolio_riskq_poster.out) (./portfolio_riskq_poster.out)
+Package hyperref Info: Link coloring OFF on input line 85.
 \@outlinefile=\write5
 \openout5 = `portfolio_riskq_poster.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 88.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 85.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 85.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 88.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 88.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 85.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 88.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 88.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 85.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 88.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 88.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 85.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 85.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 85.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 88.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 88.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 88.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 88.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 88.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 85.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 85.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 88.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 85.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 88.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 85.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 88.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 85.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -939,84 +938,584 @@ Dictionary: translator-theorem-dictionary, Language: English
 ) (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 88.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 85.
  (./portfolio_riskq_poster.nav)
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 88.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 85.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
 <wqc.png, id=13, 200.75pt x 200.75pt>
 File: wqc.png Graphic file (type png)
 <use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 88.
+Package pdftex.def Info: wqc.png  used on input line 85.
 (pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
 <uwo.png, id=14, 225.84375pt x 225.84375pt>
 File: uwo.png Graphic file (type png)
 <use uwo.png>
-Package pdftex.def Info: uwo.png  used on input line 88.
+Package pdftex.def Info: uwo.png  used on input line 85.
 (pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
 File: wqc.png Graphic file (type png)
 <use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 321.
+Package pdftex.def Info: wqc.png  used on input line 331.
 (pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
 File: uwo.png Graphic file (type png)
 <use uwo.png>
-Package pdftex.def Info: uwo.png  used on input line 321.
+Package pdftex.def Info: uwo.png  used on input line 331.
 (pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
-LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 321.
-<../experiments/plots/classical_error_vs_paths.png, id=198, 433.62pt x 289.08pt>
+LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 331.
+<../experiments/plots/classical_error_vs_paths.png, id=15, 433.62pt x 289.08pt>
 File: ../experiments/plots/classical_error_vs_paths.png Graphic file (type png)
 <use ../experiments/plots/classical_error_vs_paths.png>
-Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 321.
-(pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
+Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 331.
+(pdftex.def)             Requested size: 589.59875pt x 393.1127pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 321.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 331.
 
-<../experiments/plots/quantum_error_vs_oracle_calls.png, id=200, 433.62pt x 289.08pt>
+<../experiments/plots/quantum_error_vs_oracle_calls.png, id=17, 433.62pt x 289.08pt>
 File: ../experiments/plots/quantum_error_vs_oracle_calls.png Graphic file (type png)
 <use ../experiments/plots/quantum_error_vs_oracle_calls.png>
-Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 321.
-(pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
-<../experiments/plots/error_vs_discretization_bits.png, id=201, 433.62pt x 289.08pt>
+Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 331.
+(pdftex.def)             Requested size: 589.59875pt x 393.1127pt.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{beamercolorbox} on input line 331 ended by \end{minipage}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{beamercolorbox} on input line 331 ended by \end{altenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing } inserted.
+<inserted text> 
+                }
+l.331 \end{frame}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{altenv} on input line 331 ended by \end{uncoverenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{uncoverenv} on input line 331 ended by \end{actionenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{actionenv} on input line 331 ended by \end{column}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<../experiments/plots/error_vs_discretization_bits.png, id=18, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_discretization_bits.png Graphic file (type png)
 <use ../experiments/plots/error_vs_discretization_bits.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 321.
-(pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
-<../experiments/plots/error_vs_noise_level.png, id=202, 433.62pt x 289.08pt>
+Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 331.
+(pdftex.def)             Requested size: 188.6759pt x 125.78406pt.
+<../experiments/plots/error_vs_noise_level.png, id=19, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_noise_level.png Graphic file (type png)
 <use ../experiments/plots/error_vs_noise_level.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 321.
-(pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
-<../experiments/plots/feasibility_boundary.png, id=224, 505.89pt x 325.215pt>
+Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 331.
+(pdftex.def)             Requested size: 188.6759pt x 125.78406pt.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{minipage} on input line 331 ended by \end{center}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ->\ifdim \beamer@colbox@sep 
+                                               >\z@ \vskip \beamer@colbox@se...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...ifdim \beamer@colbox@colsep 
+                                                  >\z@ \vskip \beamer@colbox...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...fdim \beamer@colbox@colseps 
+                                                  >\z@ \vskip \beamer@colbox...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   >
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Extra }, or forgotten \endgroup.
+\endbeamercolorbox ...oup \color@endgroup \egroup 
+                                                  \wd \beamer@tempbox =\beam...
+l.331 \end{frame}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...@tempbox =\beamer@colbox@wd 
+                                                  \ifx \beamer@colbox@ht \@e...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...@tempbox =\beamer@colbox@ht 
+                                                  \fi \ifx \beamer@colbox@dp...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...@tempbox =\beamer@colbox@dp 
+                                                  \fi \ifbeamer@colbox@round...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   \setbox 
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \setbox 
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                .fg
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> \beamer@colbox@color 
+                                .bg
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...kip -\beamer@colbox@colseps 
+                                                  \fboxsep =\z@ \colorbox {b...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   \unhbox 
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \unhbox 
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> ...ty {1}\hskip \beamer@colbox@colseps 
+                                                  \box \beamer@tempbox \hski...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   \box 
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \box 
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+<argument> ...mpbox \hskip \beamer@colbox@colseps 
+                                                  
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   }
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Undefined control sequence.
+\endbeamercolorbox ...kip -\beamer@colbox@colseps 
+                                                  }\fi \ifdim \wd \beamer@te...
+l.331 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Missing number, treated as zero.
+<to be read again> 
+                   }
+l.331 \end{frame}
+                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.331 \end{frame}
+                 
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{altenv} on input line 331 ended by \end{beamercolorbox}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{uncoverenv} on input line 331 ended by \end{altenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{actionenv} on input line 331 ended by \end{uncoverenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex:331: LaTeX Error: \begin{column} on input line 331 ended by \end{actionenv}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.331 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<../experiments/plots/feasibility_boundary.png, id=20, 505.89pt x 325.215pt>
 File: ../experiments/plots/feasibility_boundary.png Graphic file (type png)
 <use ../experiments/plots/feasibility_boundary.png>
-Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 321.
-(pdftex.def)             Requested size: 899.07571pt x 577.99261pt.
-<c_dash.png, id=247, 875.27pt x 764.8575pt>
+Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 331.
+(pdftex.def)             Requested size: 1044.09792pt x 671.22075pt.
+<c_dash.png, id=21, 875.27pt x 764.8575pt>
 File: c_dash.png Graphic file (type png)
 <use c_dash.png>
-Package pdftex.def Info: c_dash.png  used on input line 321.
-(pdftex.def)             Requested size: 518.29279pt x 452.91925pt.
-<q_dash.png, id=248, 875.27pt x 765.86125pt>
+Package pdftex.def Info: c_dash.png  used on input line 331.
+(pdftex.def)             Requested size: 601.89417pt x 525.96661pt.
+<q_dash.png, id=22, 875.27pt x 765.86125pt>
 File: q_dash.png Graphic file (type png)
 <use q_dash.png>
-Package pdftex.def Info: q_dash.png  used on input line 321.
-(pdftex.def)             Requested size: 518.29279pt x 453.51364pt.
+Package pdftex.def Info: q_dash.png  used on input line 331.
+(pdftex.def)             Requested size: 601.89417pt x 526.65686pt.
+
+Overfull \vbox (1606.57626pt too high) detected at line 331
+ []
+
 
 
 File: wqc.png Graphic file (type png)
 <use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 321.
+Package pdftex.def Info: wqc.png  used on input line 331.
 (pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
 File: uwo.png Graphic file (type png)
 <use uwo.png>
-Package pdftex.def Info: uwo.png  used on input line 321.
+Package pdftex.def Info: uwo.png  used on input line 331.
 (pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
 [1{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}
 
- <./wqc.png> <./uwo.png> <../experiments/plots/classical_error_vs_paths.png> <../experiments/plots/quantum_error_vs_oracle_calls.png> <../experiments/plots/error_vs_discretization_bits.png> <../experiments/plots/error_vs_noise_level.png> <../experiments/plots/feasibility_boundary.png> <./c_dash.png> <./q_dash.png>]
+ <./wqc.png> <./uwo.png> <../experiments/plots/feasibility_boundary.png> <./c_dash.png> <./q_dash.png>]
 \tf@nav=\write6
 \openout6 = `portfolio_riskq_poster.nav'.
 
@@ -1031,22 +1530,32 @@ Package pdftex.def Info: uwo.png  used on input line 321.
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `portfolio_riskq_poster.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `portfolio_riskq_poster.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `portfolio_riskq_poster.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30571 strings out of 473190
- 657399 string characters out of 5704335
- 1193436 words of memory out of 5000000
- 53261 multiletter control sequences out of 15000+600000
- 583453 words of font info for 124 fonts, out of 8000000 for 9000
+ 30401 strings out of 473190
+ 650922 string characters out of 5704335
+ 1163299 words of memory out of 5000000
+ 53097 multiletter control sequences out of 15000+600000
+ 583159 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,123p,532b,1411s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on portfolio_riskq_poster.pdf (1 page, 630931 bytes).
+ 128i,17n,123p,484b,1403s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on portfolio_riskq_poster.pdf (1 page, 414783 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
+ 112 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
- 1030 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
