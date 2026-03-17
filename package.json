@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@slidev/theme-default": "^0.25.0"
+  },
+  "name": "dynamic-risk-dashboard",
+  "version": "1.0.0",
+  "description": "FastAPI + Streamlit system for classical and quantum risk analysis.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirorfali/Dynamic-Risk-Dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirorfali/Dynamic-Risk-Dashboard/issues"
+  },
+  "homepage": "https://github.com/amirorfali/Dynamic-Risk-Dashboard#readme"
+}
