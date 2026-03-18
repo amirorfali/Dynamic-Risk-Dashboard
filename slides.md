@@ -194,6 +194,19 @@ layout: two-cols
 layout: center
 ---
 
+# References
+
+- Rockafellar, R. T. & Uryasev, S. (2000). Optimization of Conditional Value-at-Risk. *Journal of Risk*.
+- Jorion, P. (2007). *Value at Risk*.
+- Glasserman, P. (2004). *Monte Carlo Methods in Financial Engineering*.
+- Brassard, G. et al. (2002). Quantum Amplitude Estimation and its Applications. *Contemporary Mathematics*.
+- Grinko, D. et al. (2021). Iterative Quantum Amplitude Estimation. *npj Quantum Information*.
+- Grover, L. K. (1996). A fast quantum mechanical algorithm for database search. *Proceedings of STOC*.
+
+---
+layout: center
+---
+
 # Thank You
 
 <div class="contact">

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  17 MAR 2026 14:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  18 MAR 2026 12:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -945,78 +945,82 @@ LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inpu
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
-<wqc.png, id=13, 200.75pt x 200.75pt>
-File: wqc.png Graphic file (type png)
-<use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 88.
-(pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
-<uwo.png, id=14, 225.84375pt x 225.84375pt>
+<uwo.png, id=13, 225.84375pt x 225.84375pt>
 File: uwo.png Graphic file (type png)
 <use uwo.png>
 Package pdftex.def Info: uwo.png  used on input line 88.
-(pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
+(pdftex.def)             Requested size: 130.88951pt x 130.88284pt.
+<wqc.png, id=14, 200.75pt x 200.75pt>
 File: wqc.png Graphic file (type png)
 <use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 321.
-(pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
+Package pdftex.def Info: wqc.png  used on input line 88.
+(pdftex.def)             Requested size: 130.89027pt x 130.88284pt.
 File: uwo.png Graphic file (type png)
 <use uwo.png>
-Package pdftex.def Info: uwo.png  used on input line 321.
-(pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
-LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 321.
+Package pdftex.def Info: uwo.png  used on input line 324.
+(pdftex.def)             Requested size: 130.88951pt x 130.88284pt.
+File: wqc.png Graphic file (type png)
+<use wqc.png>
+Package pdftex.def Info: wqc.png  used on input line 324.
+(pdftex.def)             Requested size: 130.89027pt x 130.88284pt.
+LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 324.
 <../experiments/plots/classical_error_vs_paths.png, id=198, 433.62pt x 289.08pt>
 File: ../experiments/plots/classical_error_vs_paths.png Graphic file (type png)
 <use ../experiments/plots/classical_error_vs_paths.png>
-Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 321.
+Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 324.
 (pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 321.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 324.
 
 <../experiments/plots/quantum_error_vs_oracle_calls.png, id=200, 433.62pt x 289.08pt>
 File: ../experiments/plots/quantum_error_vs_oracle_calls.png Graphic file (type png)
 <use ../experiments/plots/quantum_error_vs_oracle_calls.png>
-Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 321.
+Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 324.
 (pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
 <../experiments/plots/error_vs_discretization_bits.png, id=201, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_discretization_bits.png Graphic file (type png)
 <use ../experiments/plots/error_vs_discretization_bits.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 321.
+Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 324.
 (pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
 <../experiments/plots/error_vs_noise_level.png, id=202, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_noise_level.png Graphic file (type png)
 <use ../experiments/plots/error_vs_noise_level.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 321.
+Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 324.
 (pdftex.def)             Requested size: 573.23004pt x 382.19989pt.
 <../experiments/plots/feasibility_boundary.png, id=224, 505.89pt x 325.215pt>
 File: ../experiments/plots/feasibility_boundary.png Graphic file (type png)
 <use ../experiments/plots/feasibility_boundary.png>
-Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 321.
+Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 324.
 (pdftex.def)             Requested size: 899.07571pt x 577.99261pt.
 <c_dash.png, id=247, 875.27pt x 764.8575pt>
 File: c_dash.png Graphic file (type png)
 <use c_dash.png>
-Package pdftex.def Info: c_dash.png  used on input line 321.
+Package pdftex.def Info: c_dash.png  used on input line 324.
 (pdftex.def)             Requested size: 518.29279pt x 452.91925pt.
 <q_dash.png, id=248, 875.27pt x 765.86125pt>
 File: q_dash.png Graphic file (type png)
 <use q_dash.png>
-Package pdftex.def Info: q_dash.png  used on input line 321.
+Package pdftex.def Info: q_dash.png  used on input line 324.
 (pdftex.def)             Requested size: 518.29279pt x 453.51364pt.
 
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <17.28> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 324.
 
-File: wqc.png Graphic file (type png)
-<use wqc.png>
-Package pdftex.def Info: wqc.png  used on input line 321.
-(pdftex.def)             Requested size: 119.5044pt x 119.50148pt.
+
+
 File: uwo.png Graphic file (type png)
 <use uwo.png>
-Package pdftex.def Info: uwo.png  used on input line 321.
-(pdftex.def)             Requested size: 119.50362pt x 119.50148pt.
+Package pdftex.def Info: uwo.png  used on input line 324.
+(pdftex.def)             Requested size: 130.88951pt x 130.88284pt.
+File: wqc.png Graphic file (type png)
+<use wqc.png>
+Package pdftex.def Info: wqc.png  used on input line 324.
+(pdftex.def)             Requested size: 130.89027pt x 130.88284pt.
 [1{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}
 
- <./wqc.png> <./uwo.png> <../experiments/plots/classical_error_vs_paths.png> <../experiments/plots/quantum_error_vs_oracle_calls.png> <../experiments/plots/error_vs_discretization_bits.png> <../experiments/plots/error_vs_noise_level.png> <../experiments/plots/feasibility_boundary.png> <./c_dash.png> <./q_dash.png>]
+ <./uwo.png> <./wqc.png> <../experiments/plots/classical_error_vs_paths.png> <../experiments/plots/quantum_error_vs_oracle_calls.png> <../experiments/plots/error_vs_discretization_bits.png> <../experiments/plots/error_vs_noise_level.png> <../experiments/plots/feasibility_boundary.png> <./c_dash.png> <./q_dash.png>]
 \tf@nav=\write6
 \openout6 = `portfolio_riskq_poster.nav'.
 
@@ -1035,18 +1039,18 @@ Package rerunfilecheck Info: File `portfolio_riskq_poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30571 strings out of 473190
- 657399 string characters out of 5704335
- 1193436 words of memory out of 5000000
- 53261 multiletter control sequences out of 15000+600000
- 583453 words of font info for 124 fonts, out of 8000000 for 9000
+ 30587 strings out of 473190
+ 658011 string characters out of 5704335
+ 1209030 words of memory out of 5000000
+ 53276 multiletter control sequences out of 15000+600000
+ 584117 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,123p,532b,1411s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,17n,123p,696b,1411s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on portfolio_riskq_poster.pdf (1 page, 630931 bytes).
+Output written on portfolio_riskq_poster.pdf (1 page, 639536 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
+ 450 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
  3 named destinations out of 1000 (max. 500000)
- 1030 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1102 words of extra memory for PDF output out of 10000 (max. 10000000)
 
