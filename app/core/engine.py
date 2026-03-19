@@ -43,10 +43,14 @@ def compute_risk_metrics(
     weights: np.ndarray,
     horizon_days: int,
     n_paths: int = 5000,
+    histogram_bins: int = 30,
     alpha: float = 0.99,
     tail_threshold: float | None = None,
     seed: int = 42,
 ) -> RiskMetrics:
+    if histogram_bins <= 0:
+        raise ValueError("histogram_bins must be positive")
+
     losses = _portfolio_losses(
         mu=mu,
         sigma=sigma,
@@ -61,7 +65,7 @@ def compute_risk_metrics(
     tail_losses = losses[losses >= threshold]
     cvar = float(tail_losses.mean()) if tail_losses.size else var
 
-    histogram = np.histogram(losses, bins=30)
+    histogram = np.histogram(losses, bins=histogram_bins)
     hist = Histogram(
         bin_edges=histogram[1].astype(float).tolist(),
         counts=histogram[0].astype(int).tolist(),

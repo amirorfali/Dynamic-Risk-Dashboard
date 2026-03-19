@@ -1,13 +1,14 @@
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
-import sys
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
@@ -86,6 +87,17 @@ with left:
         ["Classical", "Quantum (IQAE)"],
         horizontal=True,
     )
+    quantum_num_qubits = 5
+    if backend_mode == "Quantum (IQAE)":
+        quantum_num_qubits = st.slider(
+            "IQAE histogram qubits",
+            min_value=1,
+            max_value=12,
+            value=5,
+            step=1,
+            help="IQAE uses 2**qubits loss bins. For example, 5 qubits = 32 bins.",
+        )
+        st.caption(f"Quantum discretization: {2**quantum_num_qubits} bins")
 
 
 def _parse_portfolio(raw: str) -> dict[str, float]:
@@ -101,11 +113,40 @@ def _parse_portfolio(raw: str) -> dict[str, float]:
     return portfolio
 
 
+def _compress_histogram_for_display(
+    edges: list[float],
+    counts: list[int],
+    max_bars: int = 256,
+) -> tuple[list[float], list[int], bool]:
+    if len(edges) < 2 or len(counts) != len(edges) - 1:
+        return edges, counts, False
+    if len(counts) <= max_bars:
+        return edges, counts, False
+
+    chunk_size = max(1, (len(counts) + max_bars - 1) // max_bars)
+    display_edges = [edges[0]]
+    display_counts: list[int] = []
+
+    for start in range(0, len(counts), chunk_size):
+        end = min(start + chunk_size, len(counts))
+        display_counts.append(sum(counts[start:end]))
+        display_edges.append(edges[end])
+
+    return display_edges, display_counts, True
+
+
 payload = {
     "portfolio": {},
     "horizon_days": int(horizon_days),
     "return_model": return_model,
     "backend": "quantum" if backend_mode == "Quantum (IQAE)" else "classical",
+    "vol_multiplier": float(vol_multiplier),
+    "corr_spike": float(corr_spike),
+    "mean_shock": float(mean_shock),
+    "crash_pc": float(crash_pc),
+    "crash_mean_shift": float(crash_mean_shift),
+    "crash_vol_jump": float(crash_vol_jump),
+    "quantum_num_qubits": int(quantum_num_qubits),
 }
 if tail_threshold.strip():
     payload["tail_threshold"] = float(tail_threshold)
@@ -208,16 +249,22 @@ with right:
         edges = histogram.get("bin_edges", [])
         counts = histogram.get("counts", [])
         if len(edges) >= 2 and len(counts) == len(edges) - 1:
+            display_edges, display_counts, histogram_compressed = (
+                _compress_histogram_for_display(edges, counts)
+            )
             centers = [
-                (edges[i] + edges[i + 1]) / 2 for i in range(len(edges) - 1)
+                (display_edges[i] + display_edges[i + 1]) / 2
+                for i in range(len(display_edges) - 1)
             ]
             tail_cut = data.get("tail_threshold")
             if not isinstance(tail_cut, (int, float)):
                 tail_cut = data.get("var")
             tail_mask = (
-                [c >= tail_cut for c in centers] if isinstance(tail_cut, (int, float)) else [False] * len(centers)
+                [c >= tail_cut for c in centers]
+                if isinstance(tail_cut, (int, float))
+                else [False] * len(centers)
             )
-            chart = pd.DataFrame({"loss": centers, "count": counts})
+            chart = pd.DataFrame({"loss": centers, "count": display_counts})
             fig = go.Figure(
                 data=[
                     go.Bar(
@@ -259,6 +306,11 @@ with right:
                 template="plotly_dark",
             )
             st.plotly_chart(fig, use_container_width=True)
+            if histogram_compressed:
+                st.caption(
+                    "Histogram display aggregated for readability. "
+                    f"Showing {len(display_counts)} bars from {len(counts)} bins."
+                )
 
         st.subheader("Feasibility panel")
         weight_sum = sum(payload.get("portfolio", {}).values())
@@ -269,8 +321,17 @@ with right:
         if not tail_threshold.strip():
             st.info("Tail threshold not provided; backend defaults to VaR at 99%.")
 
-        if any([vol_multiplier != 1.0, corr_spike != 0.0, mean_shock != 0.0]) or crash_pc != 0.05:
-            st.warning("Stress sliders are not wired to the backend yet.")
+        if any([vol_multiplier != 1.0, corr_spike != 0.0, mean_shock != 0.0]) or (
+            return_model == "normal_crash_mixture"
+            and any(
+                [
+                    crash_pc != 0.05,
+                    crash_mean_shift != -0.02,
+                    crash_vol_jump != 2.0,
+                ]
+            )
+        ):
+            st.success("Stress sliders are active and included in the backend request.")
 
         quantum = data.get("quantum")
         if backend_mode == "Quantum (IQAE)" and quantum:
@@ -280,11 +341,18 @@ with right:
             ci_high = quantum.get("ci_high")
             diff_abs = quantum.get("diff_abs")
             diff_rel = quantum.get("diff_rel")
+            bin_qubits = quantum.get("bin_qubits")
             padded_bins = quantum.get("padded_bins")
             n_bins = quantum.get("n_bins")
 
+            if bin_qubits and n_bins:
+                st.caption(
+                    f"IQAE discretization uses {bin_qubits} qubits for {n_bins} bins."
+                )
             if padded_bins and n_bins and padded_bins != n_bins:
-                st.warning(f"Histogram bins padded from {n_bins} to {padded_bins} for IQAE.")
+                st.warning(
+                    f"Histogram bins padded from {n_bins} to {padded_bins} for IQAE."
+                )
 
             st.subheader("Classical vs Quantum")
             comp_cols = st.columns(3)
@@ -312,7 +380,9 @@ with right:
             comp_cols[2].markdown(
                 f"<div class='metric-card'>"
                 f"<div class='metric-label'>Abs / Rel Diff</div>"
-                f"<div class='metric-value'>{diff_abs_display} | {diff_rel_display}</div>"
+                f"<div class='metric-value'>"
+                f"{diff_abs_display} | {diff_rel_display}"
+                f"</div>"
                 f"</div>",
                 unsafe_allow_html=True,
             )

@@ -25,7 +25,9 @@ Streamlit dashboard:
 ./venv/bin/streamlit run dashboard/streamlit_app.py
 ```
 Press enter if it asks for email. It starts the Streamlit development server and opens the dashboard defined in `streamlit_app.py` in your browser.
-Note: the stress sliders are UI-only right now and do not affect backend results.
+Note: the stress sliders are now included in the API request and affect backend results.
+When IQAE is selected, the dashboard also shows a qubit slider and uses
+`2**qubits` histogram bins for the quantum discretization.
 
 Backend toggle example (classical vs quantum):
 ```json
@@ -34,7 +36,11 @@ Backend toggle example (classical vs quantum):
   "horizon_days": 10,
   "return_model": "normal",
   "backend": "quantum",
-  "tail_threshold": 0.02
+  "tail_threshold": 0.02,
+  "vol_multiplier": 1.2,
+  "corr_spike": 0.25,
+  "mean_shock": -0.01,
+  "quantum_num_qubits": 5
 }
 ```
 Example response fields (truncated):
@@ -51,7 +57,9 @@ Example response fields (truncated):
     "ci_low": 0.1475,
     "ci_high": 0.1504,
     "diff_abs": 0.0010,
-    "diff_rel": 0.0067
+    "diff_rel": 0.0067,
+    "bin_qubits": 5,
+    "n_bins": 32
   }
 }
 ```

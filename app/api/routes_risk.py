@@ -1,5 +1,4 @@
 from time import perf_counter
-from math import log2
 
 import numpy as np
 import pandas as pd
@@ -9,7 +8,12 @@ from app.api.schemas import RiskRequest, RiskResponse
 from app.core.cache import get_calibration
 from app.core.engine import compute_risk_metrics
 from app.core.quantum_ae import iqae_simulator_from_probs
-from app.core.scenarios import apply_crash_mixture
+from app.core.scenarios import (
+    apply_corr_spike,
+    apply_crash_mixture,
+    apply_mean_shock,
+    apply_vol_multiplier,
+)
 
 router = APIRouter()
 
@@ -37,13 +41,32 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
     sigma = cached.sigma
     weights = pd.Series(weights, index=tickers).reindex(mu.index).to_numpy()
 
+    if payload.vol_multiplier != 1.0:
+        shocked = apply_vol_multiplier(mu=mu, sigma=sigma, m=payload.vol_multiplier)
+        mu = shocked.mu
+        sigma = shocked.sigma
+
+    if payload.corr_spike != 0.0:
+        shocked = apply_corr_spike(mu=mu, sigma=sigma, alpha=payload.corr_spike)
+        mu = shocked.mu
+        sigma = shocked.sigma
+
+    if payload.mean_shock != 0.0:
+        shocked = apply_mean_shock(
+            mu=mu,
+            sigma=sigma,
+            delta_mu=pd.Series(payload.mean_shock, index=mu.index, dtype=float),
+        )
+        mu = shocked.mu
+        sigma = shocked.sigma
+
     model = payload.return_model
     crash_params = None
     if model == "normal_crash_mixture":
         crash_params = {
-            "pc": 0.05,
-            "mean_shift": -0.02,
-            "vol_jump": 2.0,
+            "pc": payload.crash_pc,
+            "mean_shift": payload.crash_mean_shift,
+            "vol_jump": payload.crash_vol_jump,
         }
         crash_shift = pd.Series(crash_params["mean_shift"], index=mu.index)
         mixed = apply_crash_mixture(
@@ -56,15 +79,24 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
         mu = mixed.mu
         sigma = mixed.sigma
 
+    histogram_bins = (
+        2**payload.quantum_num_qubits if payload.backend == "quantum" else 30
+    )
+
     metrics = compute_risk_metrics(
         mu=mu,
         sigma=sigma,
         weights=weights,
         horizon_days=payload.horizon_days,
+        histogram_bins=histogram_bins,
         tail_threshold=payload.tail_threshold,
     )
     runtime_ms = (perf_counter() - start) * 1000.0
-    tail_threshold = metrics.var if payload.tail_threshold is None else float(payload.tail_threshold)
+    tail_threshold = (
+        metrics.var
+        if payload.tail_threshold is None
+        else float(payload.tail_threshold)
+    )
 
     histogram = {
         "bin_edges": metrics.histogram.bin_edges,
@@ -77,18 +109,24 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
         counts = np.asarray(metrics.histogram.counts, dtype=float)
         centers = 0.5 * (edges[:-1] + edges[1:]) if edges.size >= 2 else np.array([])
         total = float(counts.sum())
-        tail_mask = centers >= tail_threshold if centers.size else np.array([], dtype=bool)
+        tail_mask = (
+            centers >= tail_threshold
+            if centers.size
+            else np.array([], dtype=bool)
+        )
         tail_prob = float(counts[tail_mask].sum() / total) if total > 0 else None
 
         probs = counts / total if total > 0 else counts
         n_bins = int(probs.size)
-        if n_bins <= 0:
-            padded_bins = 0
-        else:
-            padded_bins = 1 << (int(log2(n_bins - 1)) + 1) if n_bins > 1 else 1
-        if padded_bins > n_bins:
-            probs = np.pad(probs, (0, padded_bins - n_bins))
-            tail_mask = np.pad(tail_mask, (0, padded_bins - n_bins), constant_values=False)
+        expected_bins = 2**payload.quantum_num_qubits
+        if n_bins != expected_bins:
+            raise HTTPException(
+                status_code=500,
+                detail=(
+                    "Quantum discretization mismatch: "
+                    f"expected {expected_bins} bins but received {n_bins}"
+                ),
+            )
 
         iqae = None
         if probs.size > 0 and probs.sum() > 0:
@@ -104,8 +142,16 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
         estimate = iqae.estimate if iqae else None
         ci_low = iqae.ci_low if iqae else None
         ci_high = iqae.ci_high if iqae else None
-        diff_abs = abs(estimate - tail_prob) if estimate is not None and tail_prob is not None else None
-        diff_rel = (diff_abs / tail_prob) if diff_abs is not None and tail_prob not in (None, 0.0) else None
+        diff_abs = (
+            abs(estimate - tail_prob)
+            if estimate is not None and tail_prob is not None
+            else None
+        )
+        diff_rel = (
+            (diff_abs / tail_prob)
+            if diff_abs is not None and tail_prob not in (None, 0.0)
+            else None
+        )
 
         quantum_payload = {
             "tail_prob": tail_prob,
@@ -114,8 +160,9 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
             "ci_high": ci_high,
             "diff_abs": diff_abs,
             "diff_rel": diff_rel,
+            "bin_qubits": payload.quantum_num_qubits,
             "n_bins": n_bins,
-            "padded_bins": padded_bins,
+            "padded_bins": n_bins,
             "shots": 2000,
             "max_iter": 6,
         }

@@ -34,6 +34,12 @@ Request body JSON schema:
     "tail_threshold": {
       "type": "number",
       "description": "Loss threshold ℓ. If omitted, defaults to VaR at 99%."
+    },
+    "quantum_num_qubits": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12,
+      "description": "When backend is quantum, discretize losses into 2**quantum_num_qubits bins."
     }
   },
   "additionalProperties": false
@@ -117,7 +123,8 @@ Example request:
   },
   "horizon_days": 10,
   "return_model": "normal_crash_mixture",
-  "tail_threshold": 0.02
+  "tail_threshold": 0.02,
+  "quantum_num_qubits": 5
 }
 ```
 

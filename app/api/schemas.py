@@ -12,6 +12,13 @@ class RiskRequest(BaseModel):
         default=None,
         description="Loss threshold ℓ; defaults to VaR at 99% if omitted.",
     )
+    vol_multiplier: float = Field(default=1.0, gt=0.0)
+    corr_spike: float = Field(default=0.0, ge=0.0, le=1.0)
+    mean_shock: float = 0.0
+    crash_pc: float = Field(default=0.05, ge=0.0, le=1.0)
+    crash_mean_shift: float = 0.0
+    crash_vol_jump: float = Field(default=2.0, gt=0.0)
+    quantum_num_qubits: int = Field(default=5, ge=1, le=12)
 
 
 class Histogram(BaseModel):
@@ -37,6 +44,7 @@ class QuantumEstimate(BaseModel):
     ci_high: float | None
     diff_abs: float | None
     diff_rel: float | None
+    bin_qubits: int | None
     n_bins: int | None
     padded_bins: int | None
     shots: int | None
