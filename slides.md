@@ -48,41 +48,6 @@ layout: two-cols
 layout: two-cols
 ---
 
-# Background & Definitions
-
-<div class="card-lite">
-
-- **VaR** = loss quantile at confidence alpha.  
-- **CVaR** = expected loss beyond VaR.  
-- Portfolio loss: $L = -w^T r$  
-- Tail prob: $p = \mathbb{P}(L \ge \ell)$  
-- Discretization maps losses into $2^n$ bins.
-
-</div>
-::right::
-
-# Pipeline (Classical -> Quantum)
-
-<div class="pipeline">
-  <div class="node classic">Market Data</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Calibration (mu, Sigma)</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Nested MC</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Histogram 2^n</div>
-  <div class="arrow">-></div>
-  <div class="node quantum">IQAE</div>
-</div>
-
-<div class="caption">
-Classical stages are in green; IQAE is in purple.
-</div>
-
----
-layout: two-cols
----
-
 # Methodology (Math)
 
 **Loss model**  
@@ -108,6 +73,42 @@ $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 <li>Discretization makes the tail probability quantum-ready.</li>
 <li>IQAE uses Grover amplification to infer p efficiently.</li>
 </ul>
+</div>
+
+---
+layout: two-cols
+---
+
+# Background & Definitions
+
+<div class="card-lite">
+
+- **VaR** = loss quantile at confidence alpha.  
+- **CVaR** = expected loss beyond VaR.  
+- Portfolio loss: $L = -w^T r$  
+- Tail prob: $p = \mathbb{P}(L \ge \ell)$  
+- Discretization maps losses into $2^n$ bins.
+
+</div>
+
+::right::
+
+# Pipeline (Classical -> Quantum)
+
+<div class="pipeline">
+  <div class="node classic">Market Data</div>
+  <div class="arrow">-></div>
+  <div class="node classic">Calibration (mu, Sigma)</div>
+  <div class="arrow">-></div>
+  <div class="node classic">Nested MC</div>
+  <div class="arrow">-></div>
+  <div class="node classic">Histogram 2^n</div>
+  <div class="arrow">-></div>
+  <div class="node quantum">IQAE</div>
+</div>
+
+<div class="caption">
+Classical stages are in green; IQAE is in purple.
 </div>
 
 ---
