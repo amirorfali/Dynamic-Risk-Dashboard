@@ -1,11 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1773852937.38924 "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex" "portfolio_riskq_poster.pdf" "portfolio_riskq_poster" 1773852938.86367 0
+["pdflatex"] 1773858856.3476 "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex" "portfolio_riskq_poster.pdf" "portfolio_riskq_poster" 1773858857.82602 0
   "../experiments/plots/classical_error_vs_paths.png" 1773771662.52676 45054 d4e47c139e124c6b18859bfd80762011 ""
   "../experiments/plots/error_vs_discretization_bits.png" 1773771662.63762 49968 8c4bf4620a077948d6cc99549aaa9840 ""
   "../experiments/plots/error_vs_noise_level.png" 1773771662.70092 55009 c9aeb31dd00492613ce8d4d3d3079f08 ""
   "../experiments/plots/feasibility_boundary.png" 1773771662.78482 41306 5159231969b19063f18139647af2f7c2 ""
   "../experiments/plots/quantum_error_vs_oracle_calls.png" 1773771662.58433 50728 990a3dfa7d2a8c6a58469eff4a8a317a ""
-  "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex" 1773852937.21186 14813 bf3832cc8647302d79205ef0a4703728 ""
+  "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Poster/portfolio_riskq_poster.tex" 1773858856.14373 14910 e81b9111d5fa45eb444b9d05708dbbc2 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1741388039 5466553 2748998d7db8078826afa1f272036265 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1741388039 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -242,10 +242,10 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346141 1288109d02d1c772df65535881471649 ""
   "c_dash.png" 1773685431.7514 228522 63c35185bb9a234858840b08975724fe ""
-  "portfolio_riskq_poster.aux" 1773852938.81021 634 ae80416881ed294306d163861277d955 "pdflatex"
-  "portfolio_riskq_poster.nav" 1773852938.81072 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "portfolio_riskq_poster.out" 1773852937.95964 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "portfolio_riskq_poster.tex" 1773852937.21186 14813 bf3832cc8647302d79205ef0a4703728 ""
+  "portfolio_riskq_poster.aux" 1773858857.77279 634 ae80416881ed294306d163861277d955 "pdflatex"
+  "portfolio_riskq_poster.nav" 1773858857.77353 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "portfolio_riskq_poster.out" 1773858856.87171 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "portfolio_riskq_poster.tex" 1773858856.14373 14910 e81b9111d5fa45eb444b9d05708dbbc2 ""
   "q_dash.png" 1773685371.3115 258997 4a66c6b6596f3d4d9fd75ae89022460c ""
   "uwo.png" 1773373218.77833 3981 a58cfecd9cc02a302d55dfbfdf9c67d6 ""
   "wqc.png" 1773373396.39101 4375 0aa73bff7731d509743aa2581813d33e ""

@@ -114,7 +114,7 @@ Risk teams need reliable VaR/CVaR under tight compute budgets, especially when t
     \item Communicate results through stakeholder-friendly visuals.
 \end{itemize}
 \vspace{0.3em}
-The emphasis is on a complete, inspectable pipeline that supports both classical validation and quantum-oriented estimation.
+The emphasis is on a pipeline that supports both classical validation and quantum-oriented estimation.
 \end{block}
 
 \begin{block}{Models \& Materials}
@@ -130,9 +130,9 @@ Implementation uses Python with NumPy and Pandas for numerical work, a FastAPI b
 \begin{block}{Methodology}
 \textbf{\large Nested Monte Carlo (loss samples)}
 
-Draw returns from a Gaussian model, then compute portfolio loss as the weighted negative return. $r$ are simulated asset returns, $\mu$ and $\Sigma$ are their mean and covariance, and $w$ are portfolio weights.
+Outer loop samples market regime parameters (e.g., drift/vol/correlation), and the inner loop draws returns from a Gaussian model to compute portfolio loss. $r$ are simulated asset returns, $\mu$ and $\Sigma$ are their mean and covariance, and $w$ are portfolio weights.
 \begin{align*}
-    r \sim \mathcal{N}(\mu,\Sigma), \quad L = -w^\top r
+(\mu_s,\Sigma_s) \sim \mathcal{S}, \quad r_{s,i} \sim \mathcal{N}(\mu_s,\Sigma_s), \quad L_{s,i} = -w^\top r_{s,i}
 \end{align*}
 
 \textbf{\large Tail metrics}
@@ -182,7 +182,7 @@ VaR is the loss quantile at level $\alpha$; CVaR averages losses beyond VaR.
     iconquantum/.style={draw=LogoPurple,fill=LogoPurple!15,circle,inner sep=1.6pt,font=\scriptsize}
 ]
   \node[classicbox] (data) {Market Data};
-  \node[classicbox, right=of data] (calib) {Calibration $(\mu,\Sigma)$};
+  \node[classicbox, right=of data] (calib) {Calibration $(\mu,\sigma)$};
   \node[classicbox, right=of calib] (mc) {Nested MC};
   \node[classicbox, right=of mc] (hist) {Histogram $2^n$};
   \node[quantumbox, right=of hist] (iqae) {IQAE};
@@ -203,7 +203,7 @@ VaR is the loss quantile at level $\alpha$; CVaR averages losses beyond VaR.
   \draw[arrow, color=ClassicGreen] (hist) -- (tail);
 \end{tikzpicture}
 \end{center}
-Market data calibrates $(\mu,\Sigma)$, nested MC yields losses, and discretization builds a $2^n$ histogram and tail mask in the \textcolor{ClassicGreen}{classical} pipeline. IQAE then estimates tail probability in the \textcolor{LogoPurple}{quantum} stage.
+Market data calibrates $(\mu,\sigma)$, nested MC yields losses, and discretization builds a $2^n$ histogram and tail mask in the \textcolor{ClassicGreen}{classical} pipeline. IQAE then estimates tail probability in the \textcolor{LogoPurple}{quantum} stage.
 \end{block}
 
 \begin{block}{Analysis \& Results}

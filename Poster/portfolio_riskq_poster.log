@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  18 MAR 2026 12:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  18 MAR 2026 14:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1009,6 +1009,10 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <17.28> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 324.
 
 
+Overfull \vbox (1.70026pt too high) detected at line 324
+ []
+
+
 
 File: uwo.png Graphic file (type png)
 <use uwo.png>
@@ -1040,14 +1044,14 @@ Package rerunfilecheck Info: File `portfolio_riskq_poster.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  30587 strings out of 473190
- 658011 string characters out of 5704335
- 1209030 words of memory out of 5000000
+ 658005 string characters out of 5704335
+ 1210704 words of memory out of 5000000
  53276 multiletter control sequences out of 15000+600000
  584117 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,17n,123p,696b,1411s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on portfolio_riskq_poster.pdf (1 page, 639536 bytes).
+Output written on portfolio_riskq_poster.pdf (1 page, 639957 bytes).
 PDF statistics:
  450 PDF objects out of 1000 (max. 8388607)
  228 compressed objects within 3 object streams

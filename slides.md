@@ -86,6 +86,7 @@ layout: two-cols
 # Methodology (Math)
 
 **Loss model**  
+$$ (\mu_s,\Sigma_s) \sim \mathcal{S},\quad r_{s,i} \sim \mathcal{N}(\mu_s,\Sigma_s),\quad L_{s,i} = -w^T r_{s,i} $$
 $$r \sim \mathcal{N}(\mu, \Sigma),\quad L = -w^T r$$
 
 **Tail metrics**  
@@ -110,28 +111,31 @@ $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 </div>
 
 ---
-# Experiments
-
-<div class="grid">
-  <div class="plot-card">
-    <img src="/experiments/plots/classical_error_vs_paths.png" />
-    <div class="badge">Takeaway</div>
-    <div class="caption">VaR error falls with 1/sqrt(N); 10k+ paths stabilizes tails.</div>
-  </div>
-  <div class="plot-card">
-    <img src="/experiments/plots/quantum_error_vs_oracle_calls.png" />
-    <div class="badge">Takeaway</div>
-    <div class="caption">Sub-1% tail error in a few Grover rounds.</div>
-  </div>
-  <div class="plot-card">
-    <img src="/experiments/plots/error_vs_discretization_bits.png" />
-    <div class="badge">Takeaway</div>
-    <div class="caption">Gains taper beyond 6-7 bits (binning bias).</div>
-  </div>
-  <div class="plot-card">
-    <img src="/experiments/plots/error_vs_noise_level.png" />
-    <div class="badge">Takeaway</div>
-    <div class="caption">Noise (sigma >= 0.05) dominates error.</div>
+class: white-bg
+---
+<div class="exp-page">
+  <h1 class="center-title">Experiments</h1>
+  <div class="exp-grid">
+    <div class="exp-stack">
+      <div class="exp-card">
+        <object data="/experiments/animated/classical_error_vs_paths.svg" type="image/svg+xml" class="exp-svg"></object>
+        <div class="caption">VaR error falls with 1/sqrt(N); 10k+ paths stabilizes tails.</div>
+      </div>
+      <div class="exp-card">
+        <object data="/experiments/animated/error_vs_discretization_bits.svg" type="image/svg+xml" class="exp-svg"></object>
+        <div class="caption">Gains taper beyond 6–7 bits (binning bias).</div>
+      </div>
+    </div>
+    <div class="exp-stack">
+      <div class="exp-card">
+        <object data="/experiments/animated/quantum_error_vs_oracle_calls.svg" type="image/svg+xml" class="exp-svg"></object>
+        <div class="caption">Sub‑1% tail error in a few Grover rounds.</div>
+      </div>
+      <div class="exp-card">
+        <object data="/experiments/animated/error_vs_noise_level.svg" type="image/svg+xml" class="exp-svg"></object>
+        <div class="caption">Noise (sigma >= 0.05) dominates error.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -153,19 +157,18 @@ layout: two-cols
 </div>
 
 ---
+class: white-bg
+---
 # Dashboard Validation
 
-<div class="grid-2">
-  <div class="plot-card">
-    <div class="plot-title">Classical Backend</div>
-    <img src="/Poster/c_dash.png" />
-    <div class="caption">Interpretability: tail-highlighted histogram + VaR/CVaR.</div>
-  </div>
-  <div class="plot-card">
-    <div class="plot-title">Quantum (IQAE) Backend</div>
-    <img src="/Poster/q_dash.png" />
-    <div class="caption">Usability: IQAE CI + absolute/relative error vs classical.</div>
-  </div>
+<div>
+  <img src="/Poster/c_dash.png" style="width:100%; border-radius:10px; border:1px solid #e4ddf4;" />
+  <div class="caption">Interpretability: tail-highlighted histogram + VaR/CVaR.</div>
+</div>
+
+<div style="margin-top:0.6rem;">
+  <img src="/Poster/q_dash.png" style="width:100%; border-radius:10px; border:1px solid #e4ddf4;" />
+  <div class="caption">Usability: IQAE CI + absolute/relative error vs classical.</div>
 </div>
 
 ---
