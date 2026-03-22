@@ -209,9 +209,9 @@ layout: two-cols
 </div>
 
 <div class="card-lite">
-<p><strong>Supporting detail</strong></p>
+<p><strong>How are they using quantum?</strong></p>
 <ul>
-<li>SBuilding quantum algorithms internally for pricing and risk</li>
+<li>Building quantum algorithms internally for pricing and risk</li>
 <li>JPMorgan built and ran actual quantum algorithms on hardware (Barron)</li>
 <li>IBM + JPMorgan are testing portfolio optimization + derivatives pricing algorithms together</li>
 </ul>
