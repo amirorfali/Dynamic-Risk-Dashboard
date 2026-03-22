@@ -19,30 +19,31 @@ layout: cover
 ---
 layout: two-cols
 ---
+<div>
+  <h1 class="center-title"> Motivation and Project Direction</h1>
+</div>
 
-# Problem & Goal
+
 
 <div class="card">
-<ul>
-<li>Risk teams need VaR/CVaR accuracy under tight compute budgets.</li>
-<li>Classical MC is robust but expensive for tail probabilities.</li>
-<li>Goal: preserve interpretability while enabling faster tail estimation.</li>
-</ul>
+  <ul>
+    <li>How may quantum algorithms intertwine with complex finance algorithms currently used?</li>
+  </ul>
+</div>
+
+
+
+<div class="card accent">
+  <ul>
+    <li>Risk analysis (VaR, CVar)</li>
+    <li>Use a cornerstone algorithm in quantatative finance</li>
+    <li>Buld and run the algortihm classically</li>
+    <li>Run the algorithm through a quantum computer simulation to show speedup</li>
+  </ul>
 </div>
 
 ::right::
-
-# Key Contribution
-
-<div class="card accent">
-<ul>
-<li>Classical -> quantum VaR/CVaR workflow.</li>
-<li>Discretized histogram + tail mask bridge.</li>
-<li>IQAE vs nested Monte Carlo comparison.</li>
-<li>Feasibility boundary for NISQ constraints.</li>
-<li>Production-style dashboard validation.</li>
-</ul>
-</div>
+<img src="/Users/amirorfali/Desktop/Dynamic-Risk-Dashboard/quantum-finance.webp" />
 
 ---
 layout: two-cols
@@ -52,8 +53,8 @@ layout: two-cols
 
 <div class="card-lite">
 
-- **VaR** = loss quantile at confidence alpha.  
-- **CVaR** = expected loss beyond VaR.  
+- **VaR** = How much could we lose at most at X% of the time.  
+- **CVaR** = tail risk of a risk distrubution.  
 - Portfolio loss: $L = -w^T r$  
 - Tail prob: $p = \mathbb{P}(L \ge \ell)$  
 - Discretization maps losses into $2^n$ bins.
@@ -85,11 +86,11 @@ layout: two-cols
 
 # Methodology (Math)
 
-**Loss model**  
+**Loss Model**  
 $$ (\mu_s,\Sigma_s) \sim \mathcal{S},\quad r_{s,i} \sim \mathcal{N}(\mu_s,\Sigma_s),\quad L_{s,i} = -w^T r_{s,i} $$
-$$r \sim \mathcal{N}(\mu, \Sigma),\quad L = -w^T r$$
 
-**Tail metrics**  
+
+**Tail Metrics**  
 $$\mathrm{VaR}_\alpha = Q_\alpha(L),\quad \mathrm{CVaR}_\alpha = \mathbb{E}[L \mid L \ge \mathrm{VaR}_\alpha]$$
 
 **Discretization**  
@@ -100,7 +101,9 @@ $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 
 ::right::
 
-# Why it works
+<div style="margin-top: 8rem;">
+
+## Why it works
 
 <div class="card">
 <ul>
@@ -108,6 +111,8 @@ $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 <li>Discretization makes the tail probability quantum-ready.</li>
 <li>IQAE uses Grover amplification to infer p efficiently.</li>
 </ul>
+</div>
+
 </div>
 
 ---
@@ -193,9 +198,30 @@ layout: two-cols
 <p>We validated a classical-to-quantum risk pipeline with consistent inputs, interpretable outputs, and a clear audit trail from data to tail estimate.</p>
 </div>
 
+
 ---
-layout: center
+
+# Who is pursuing this currently?
+
+<div class="card">
+<p><strong>J.P Morgan Chase, Goldman Sachs, HSBC, Barclays, BNP Paribas </strong></p>
+<p></p>
+</div>
+
+<div class="card-lite">
+<p><strong>Supporting detail</strong></p>
+<ul>
+<li>SBuilding quantum algorithms internally for pricing and risk</li>
+<li>JPMorgan built and ran actual quantum algorithms on hardware (Barron)</li>
+<li>IBM + JPMorgan are testing portfolio optimization + derivatives pricing algorithms together</li>
+</ul>
+</div>
+
+<img src="/Users/amirorfali/Desktop/Dynamic-Risk-Dashboard/qaoa-media-preview.png" style="display:block; max-width:34%; max-height:34vh; object-fit:contain; margin:0.75rem auto 0;" />
+
+
 ---
+
 
 # References
 
