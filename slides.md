@@ -33,8 +33,6 @@ katex: true
   </ul>
 </div>
 
-
-
 <div class="card accent">
   <ul>
     <li>Risk analysis (VaR, CVar)</li>
@@ -48,6 +46,20 @@ katex: true
 <img src="/quantum-finance.webp" />
 
 ---
+
+# Key Contribution
+
+<div class="card accent">
+<ul>
+<li>Classical → quantum VaR/CVaR workflow.</li>
+<li>Discretized histogram + tail mask bridge.</li>
+<li>IQAE vs nested Monte Carlo comparison.</li>
+<li>Feasibility boundary for NISQ constraints.</li>
+<li>Production-style dashboard validation.</li>
+</ul>
+</div>
+
+---
 layout: two-cols
 ---
 
@@ -55,8 +67,8 @@ layout: two-cols
 
 <div class="card-lite">
 
-- **VaR** = How much could we lose at most at X% of the time.  
-- **CVaR** = tail risk of a risk distrubution.  
+- **VaR** = loss quantile at confidence alpha.  
+- **CVaR** = expected loss beyond VaR.  
 - Portfolio loss: $L = -w^T r$  
 - Tail prob: $p = \mathbb{P}(L \ge \ell)$  
 - Discretization maps losses into $2^n$ bins.
@@ -291,6 +303,7 @@ layout: two-cols
 
 
 ---
+layout: center
 ---
 
 # Who is pursuing this currently?
