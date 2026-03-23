@@ -1,0 +1,1 @@
+import{f as o,o as s,e as t,g as a,i as r,d as n,F as c}from"./modules/vue-DBGQJabI.js";import{u as l}from"./slidev/context-9sYGdFWu.js";import{_}from"./EntangleTracker.vue_vue_type_script_setup_true_lang-BLOJHUGM.js";const m={class:"slidev-layout"},B=o({__name:"two-cols",setup(i){return l(),(e,d)=>(s(),t(c,null,[a("div",m,[r(e.$slots,"default")]),n(_)],64))}});export{B as _};
