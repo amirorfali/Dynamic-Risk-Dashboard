@@ -159,8 +159,8 @@ class: white-bg
 <h1 class="center-title">Dashboard Validation</h1>
 
 <div class="dash-grid">
-  <iframe src="https://dynamic-riskq.streamlit.app/" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
-  <iframe src="https://dynamic-riskq.streamlit.app/" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
+  <iframe src="https://dynamic-riskq.streamlit.app/?embed=true" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
+  <iframe src="https://dynamic-riskq.streamlit.app/?embed=true" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
 </div>
 <div class="caption">Live dashboard view (requires Streamlit running locally).</div>
 
