@@ -46,8 +46,8 @@ layout: two-cols
   </ul>
 </div>
 
-::right::
-<img src="/quantum-finance.webp" />
+
+<img src="/quantum-finance.webp" style="display:block; max-width:20%; max-height:34vh; object-fit:contain; margin:0.75rem auto 0;"/>
 
 ---
 class: white-bg
