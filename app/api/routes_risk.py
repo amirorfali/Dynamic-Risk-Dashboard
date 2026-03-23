@@ -180,7 +180,7 @@ def compute_risk(payload: RiskRequest) -> RiskResponse:
             "model": model,
             "backend": payload.backend,
             "cache_hit": cached.cache_hit,
-            "data_source": "yfinance",
+            "data_source": cached.data_source,
             "window_days": 252,
             "crash_params": crash_params,
         },

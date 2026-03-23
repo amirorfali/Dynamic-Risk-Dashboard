@@ -9,7 +9,12 @@ from typing import Iterable
 import numpy as np
 import pandas as pd
 
-from app.core.data import calibrate_mu_sigma, compute_returns, fetch_prices_yfinance
+from app.core.data import (
+    calibrate_mu_sigma,
+    compute_returns,
+    fetch_prices_yfinance,
+    load_cached_prices,
+)
 from app.utils.config import settings
 
 
@@ -18,6 +23,7 @@ class CachedCalibration:
     mu: pd.Series
     sigma: pd.DataFrame
     cache_hit: bool
+    data_source: str
 
 
 def _cache_key(
@@ -70,12 +76,31 @@ def get_calibration(
     cached = _load_from_cache(path)
     if cached is not None:
         mu, sigma = cached
-        return CachedCalibration(mu=mu, sigma=sigma, cache_hit=True)
+        return CachedCalibration(
+            mu=mu,
+            sigma=sigma,
+            cache_hit=True,
+            data_source="cache",
+        )
 
     period = f"{window_days}d" if window_days is not None else "1y"
-    prices = fetch_prices_yfinance(tickers=tickers, period=period)
+    data_source = "yfinance"
+    try:
+        prices = fetch_prices_yfinance(tickers=tickers, period=period)
+    except ValueError:
+        prices = load_cached_prices()
+        missing = [ticker for ticker in tickers if ticker not in prices.columns]
+        if missing:
+            raise
+        prices = prices.loc[:, tickers]
+        data_source = "sample_prices.csv"
 
     returns = compute_returns(prices)
     calibration = calibrate_mu_sigma(returns)
     _save_to_cache(path, calibration.mu, calibration.sigma)
-    return CachedCalibration(mu=calibration.mu, sigma=calibration.sigma, cache_hit=False)
+    return CachedCalibration(
+        mu=calibration.mu,
+        sigma=calibration.sigma,
+        cache_hit=False,
+        data_source=data_source,
+    )

@@ -8,10 +8,14 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+from fastapi import HTTPException
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
+
+from app.api.routes_risk import compute_risk
+from app.api.schemas import RiskRequest
 
 st.set_page_config(page_title="Risk Dashboard", layout="wide")
 
@@ -49,13 +53,21 @@ st.markdown(
 )
 
 st.title("Dynamic Risk Dashboard")
-st.write("MVP UI – connect to the FastAPI backend and inspect results.")
+st.write("Run risk analysis directly in Streamlit or call an external FastAPI backend.")
 
-with st.expander("API Settings", expanded=True):
-    api_url = st.text_input(
-        "Risk endpoint URL",
-        value="http://127.0.0.1:8000/api/risk",
+with st.expander("Execution Settings", expanded=True):
+    execution_mode = st.radio(
+        "Computation source",
+        options=["In-app (recommended for Streamlit Cloud)", "External FastAPI API"],
+        index=0,
+        horizontal=False,
     )
+    api_url = ""
+    if execution_mode == "External FastAPI API":
+        api_url = st.text_input(
+            "Risk endpoint URL",
+            value="http://127.0.0.1:8000/api/risk",
+        )
 
 left, right = st.columns([1, 2], gap="large")
 
@@ -135,6 +147,12 @@ def _compress_histogram_for_display(
     return display_edges, display_counts, True
 
 
+def _run_local_risk(payload: dict) -> dict:
+    request = RiskRequest(**payload)
+    response = compute_risk(request)
+    return response.model_dump()
+
+
 payload = {
     "portfolio": {},
     "horizon_days": int(horizon_days),
@@ -171,22 +189,31 @@ with right:
         if payload_error:
             st.stop()
         try:
-            req = Request(
-                api_url,
-                data=json.dumps(payload).encode("utf-8"),
-                headers={"Content-Type": "application/json"},
-                method="POST",
-            )
-            with urlopen(req, timeout=30) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
+            if execution_mode == "External FastAPI API":
+                req = Request(
+                    api_url,
+                    data=json.dumps(payload).encode("utf-8"),
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+                with urlopen(req, timeout=30) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+            else:
+                data = _run_local_risk(payload)
         except HTTPError as exc:
             st.error(f"HTTP error: {exc.code} {exc.reason}")
             st.stop()
         except URLError as exc:
             st.error(f"Connection error: {exc.reason}")
             st.stop()
+        except HTTPException as exc:
+            st.error(f"Risk computation error: {exc.detail}")
+            st.stop()
         except json.JSONDecodeError:
             st.error("Failed to parse response JSON.")
+            st.stop()
+        except Exception as exc:
+            st.error(f"Unexpected error while running risk analysis: {exc}")
             st.stop()
 
         metrics = [
