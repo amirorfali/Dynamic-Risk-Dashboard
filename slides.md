@@ -20,6 +20,7 @@ katex: true
 </div>
 
 ---
+layout: two-cols
 ---
 <div>
   <h1 class="center-title"> Motivation and Project Direction</h1>
@@ -32,6 +33,8 @@ katex: true
     <li>How may quantum algorithms intertwine with complex finance algorithms currently used?</li>
   </ul>
 </div>
+
+
 
 <div class="card accent">
   <ul>
@@ -46,20 +49,6 @@ katex: true
 <img src="/quantum-finance.webp" />
 
 ---
-
-# Key Contribution
-
-<div class="card accent">
-<ul>
-<li>Classical → quantum VaR/CVaR workflow.</li>
-<li>Discretized histogram + tail mask bridge.</li>
-<li>IQAE vs nested Monte Carlo comparison.</li>
-<li>Feasibility boundary for NISQ constraints.</li>
-<li>Production-style dashboard validation.</li>
-</ul>
-</div>
-
----
 layout: two-cols
 ---
 
@@ -67,36 +56,18 @@ layout: two-cols
 
 <div class="card-lite">
 
-- **VaR** = loss quantile at confidence alpha.  
-- **CVaR** = expected loss beyond VaR.  
+- **VaR** = How much could we lose at most at X% of the time.  
+- **CVaR** = tail risk of a risk distrubution.  
 - Portfolio loss: $L = -w^T r$  
 - Tail prob: $p = \mathbb{P}(L \ge \ell)$  
 - Discretization maps losses into $2^n$ bins.
 
 </div>
-::right::
-
-# Pipeline (Classical -> Quantum)
-
-<div class="pipeline">
-  <div class="node classic">Market Data</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Calibration (mu, Sigma)</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Nested MC</div>
-  <div class="arrow">-></div>
-  <div class="node classic">Histogram 2^n</div>
-  <div class="arrow">-></div>
-  <div class="node quantum">IQAE</div>
-</div>
-
-<div class="caption">
-Classical stages are in green; IQAE is in purple.
-</div>
 
 ---
 layout: two-cols
 ---
+
 # Methodology (Math)
 
 **Loss Model**  
@@ -129,6 +100,7 @@ $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 </div>
 
 ---
+class: white-bg
 ---
 
 <h1 class="center-title">Pipeline (Classical → Quantum)</h1>
@@ -286,7 +258,7 @@ class: white-bg
 layout: two-cols
 ---
 
-<h1 class="center-title">Results & Implications</h1>
+# Results & Implications
 
 <div class="card">
 <ul>
@@ -296,14 +268,15 @@ layout: two-cols
 </ul>
 </div>
 
-<h1 class="center-title">Conclusion</h1>
+::right::
+
+# Conclusion
+
 <div class="card accent">
 <p>We validated a classical-to-quantum risk pipeline with consistent inputs, interpretable outputs, and a clear audit trail from data to tail estimate.</p>
 </div>
 
 
----
-layout: center
 ---
 
 # Who is pursuing this currently?
