@@ -4,6 +4,7 @@ title: Portfolio RiskQ
 info: Classical-to-Quantum Tail Risk Estimation
 layout: cover
 katex: true
+progress: true
 ---
 
 <div class="cover">
@@ -49,10 +50,10 @@ layout: two-cols
 <img src="/quantum-finance.webp" />
 
 ---
-layout: two-cols
+class: white-bg
 ---
 
-# Background & Definitions
+<h1 class="center-title">Background & Definitions</h1>
 
 <div class="card-lite">
 
@@ -158,8 +159,8 @@ class: white-bg
 <h1 class="center-title">Dashboard Validation</h1>
 
 <div class="dash-grid">
-  <iframe src="http://localhost:8501" style="width:300%; height:140vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
-  <iframe src="http://localhost:8501" style="width:300%; height:140vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
+  <iframe src="http://localhost:8501" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
+  <iframe src="http://localhost:8501" style="width:300%; height:125vh; border:0; border-radius:12px; transform: scale(0.34); transform-origin: top left;"></iframe>
 </div>
 <div class="caption">Live dashboard view (requires Streamlit running locally).</div>
 

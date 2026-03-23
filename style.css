@@ -21,6 +21,47 @@
   overflow: hidden;
 }
 
+/* Quantum-style progress tracker */
+.entangle-tracker {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  width: min(82vw, 860px);
+  height: 42px;
+  display: grid;
+  align-items: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.95;
+}
+
+.entangle-tracker svg {
+  width: 100%;
+  height: 100%;
+}
+
+.entangle-links path {
+  fill: none;
+  stroke: rgba(125, 63, 207, 0.45);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(125, 63, 207, 0.25));
+}
+
+.entangle-node {
+  stroke: rgba(125, 63, 207, 0.6);
+  stroke-width: 1.5;
+}
+
+.entangle-count {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+
 .slidev-layout.white-bg {
   background: #ffffff !important;
 }
