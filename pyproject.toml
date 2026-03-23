@@ -12,8 +12,9 @@ dependencies = [
   "ruff",
   "black",
   "pytest",
-  "streamlit",
-  "plotly"
+  "streamlit==1.55.0",
+  "plotly",
+  "altair==5.5.0",
 ]
 
 [tool.black]
