@@ -14,6 +14,7 @@ dependencies = [
   "pytest",
   "streamlit",
   "plotly"
+  "altair = "4.2.2"
 ]
 
 [tool.black]
