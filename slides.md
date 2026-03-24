@@ -35,8 +35,6 @@ layout: two-cols
   </ul>
 </div>
 
-
-
 <div class="card accent">
   <ul>
     <li>Risk analysis (VaR, CVar)</li>
@@ -71,17 +69,17 @@ layout: two-cols
 
 # Methodology (Math)
 
-**Loss Model**  
+#### **Loss Model**  
 $$ (\mu_s,\Sigma_s) \sim \mathcal{S},\quad r_{s,i} \sim \mathcal{N}(\mu_s,\Sigma_s),\quad L_{s,i} = -w^T r_{s,i} $$
 
 
-**Tail Metrics**  
+#### **Tail Metrics**  
 $$\mathrm{VaR}_\alpha = Q_\alpha(L),\quad \mathrm{CVaR}_\alpha = \mathbb{E}[L \mid L \ge \mathrm{VaR}_\alpha]$$
 
-**Discretization**  
+#### **Discretization**  
 $$p_i = n_i / N,\quad \sum_i p_i = 1,\quad \hat{p} = \sum_{i\in\text{tail}} p_i$$
 
-**IQAE**  
+#### **IQAE**  
 $$p = \sin^2(\theta),\quad p_m = \sin^2((2m+1)\theta)$$
 
 ::right::
