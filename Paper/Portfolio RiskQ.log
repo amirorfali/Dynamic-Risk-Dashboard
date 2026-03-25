@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  24 MAR 2026 12:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  25 MAR 2026 14:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -279,7 +279,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 
-Underfull \hbox (badness 3271) in paragraph at lines 61--62
+Underfull \hbox (badness 3271) in paragraph at lines 64--65
 []\OT1/ptm/m/n/10 Outer loop sam-ples mar-ket regime pa-ram-e-ters (e.g.,
  []
 
@@ -289,51 +289,51 @@ Underfull \hbox (badness 3271) in paragraph at lines 61--62
 
 
 ]
+
 <../experiments/plots/classical_error_vs_paths.png, id=17, 433.62pt x 289.08pt>
 File: ../experiments/plots/classical_error_vs_paths.png Graphic file (type png)
 <use ../experiments/plots/classical_error_vs_paths.png>
-Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 108.
+Package pdftex.def Info: ../experiments/plots/classical_error_vs_paths.png  used on input line 117.
 (pdftex.def)             Requested size: 120.95892pt x 80.63748pt.
 <../experiments/plots/quantum_error_vs_oracle_calls.png, id=19, 433.62pt x 289.08pt>
 File: ../experiments/plots/quantum_error_vs_oracle_calls.png Graphic file (type png)
 <use ../experiments/plots/quantum_error_vs_oracle_calls.png>
-Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 109.
+Package pdftex.def Info: ../experiments/plots/quantum_error_vs_oracle_calls.png  used on input line 118.
 (pdftex.def)             Requested size: 120.95892pt x 80.63748pt.
 <../experiments/plots/error_vs_discretization_bits.png, id=20, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_discretization_bits.png Graphic file (type png)
 <use ../experiments/plots/error_vs_discretization_bits.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 116.
+Package pdftex.def Info: ../experiments/plots/error_vs_discretization_bits.png  used on input line 125.
 (pdftex.def)             Requested size: 120.95892pt x 80.63748pt.
 <../experiments/plots/error_vs_noise_level.png, id=21, 433.62pt x 289.08pt>
 File: ../experiments/plots/error_vs_noise_level.png Graphic file (type png)
 <use ../experiments/plots/error_vs_noise_level.png>
-Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 117.
+Package pdftex.def Info: ../experiments/plots/error_vs_noise_level.png  used on input line 126.
 (pdftex.def)             Requested size: 120.95892pt x 80.63748pt.
 <../experiments/plots/feasibility_boundary.png, id=22, 505.89pt x 325.215pt>
 File: ../experiments/plots/feasibility_boundary.png Graphic file (type png)
 <use ../experiments/plots/feasibility_boundary.png>
-Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 126.
+Package pdftex.def Info: ../experiments/plots/feasibility_boundary.png  used on input line 135.
 (pdftex.def)             Requested size: 176.39923pt x 113.40018pt.
-
-
 <../Poster/c_dash.png, id=23, 875.27pt x 764.8575pt>
 File: ../Poster/c_dash.png Graphic file (type png)
 <use ../Poster/c_dash.png>
-Package pdftex.def Info: ../Poster/c_dash.png  used on input line 135.
+Package pdftex.def Info: ../Poster/c_dash.png  used on input line 144.
 (pdftex.def)             Requested size: 120.95892pt x 105.69049pt.
 <../Poster/q_dash.png, id=24, 875.27pt x 765.86125pt>
 File: ../Poster/q_dash.png Graphic file (type png)
 <use ../Poster/q_dash.png>
-Package pdftex.def Info: ../Poster/q_dash.png  used on input line 136.
+Package pdftex.def Info: ../Poster/q_dash.png  used on input line 145.
 (pdftex.def)             Requested size: 120.95892pt x 105.8292pt.
 
 
-[2 <../experiments/plots/classical_error_vs_paths.png> <../experiments/plots/quantum_error_vs_oracle_calls.png> <../experiments/plots/error_vs_discretization_bits.png> <../experiments/plots/error_vs_noise_level.png> <../experiments/plots/feasibility_boundary.png> <../Poster/c_dash.png> <../Poster/q_dash.png>]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 153.
- (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+[2 <../experiments/plots/classical_error_vs_paths.png> <../experiments/plots/quantum_error_vs_oracle_calls.png> <../experiments/plots/error_vs_discretization_bits.png> <../experiments/plots/error_vs_noise_level.png>]
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 168.
+(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (60.0pt too wide) in paragraph at lines 152--155
+Overfull \hbox (60.0pt too wide) in paragraph at lines 167--170
 \OT1/pcr/m/n/10 https://github.com/amirorfali/Dynamic-Risk-Dashboard 
  []
 
@@ -350,11 +350,7 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-
-
-[3
-
-] (./Portfolio RiskQ.aux)
+[3 <../experiments/plots/feasibility_boundary.png> <../Poster/c_dash.png> <../Poster/q_dash.png>] (./Portfolio RiskQ.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -363,13 +359,13 @@ L3 programming layer <2025-01-18>
 Here is how much of TeX's memory you used:
  4284 strings out of 473190
  70618 string characters out of 5704335
- 475467 words of memory out of 5000000
+ 477467 words of memory out of 5000000
  27497 multiletter control sequences out of 15000+600000
  595734 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,11n,65p,808b,266s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "Portfolio RiskQ.pdf" (3 pages, 620838 bytes).
+Output written on "Portfolio RiskQ.pdf" (3 pages, 622649 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream

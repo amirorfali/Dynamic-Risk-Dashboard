@@ -44,6 +44,9 @@ We investigate how quantum algorithms can integrate with established financial r
 \section{Background and Definitions}
 We use the following terms throughout: VaR is a loss cutoff at confidence level $\alpha$; CVaR is the average loss beyond VaR; IQAE denotes Iterative Quantum Amplitude Estimation; and discretization refers to mapping losses into $2^n$ histogram bins. Portfolio loss is $L = -w^\top r$ with tail probability $p = \mathbb{P}(L \ge \ell)$, where the tail threshold $\ell$ defines extreme-loss events and discretization groups losses into $2^n$ bins to form a histogram.
 
+\section{Related Work}
+Classical risk measurement and Monte Carlo foundations follow standard treatments of VaR/CVaR and simulation-based estimation. Quantum amplitude estimation and its iterative variants motivate the IQAE component, and prior quantum finance work applies related methods to risk analysis under NISQ constraints. Our contribution focuses on a consistent, auditable classical-to-quantum pipeline that preserves loss distributions and tail thresholds for fair comparison. This bridges research-grade quantum estimation with production-style risk reporting, including confidence intervals and error metrics.
+
 \section{Objectives}
 \begin{itemize}
     \item Build a working classical risk engine and dashboard MVP.
@@ -90,6 +93,12 @@ VaR is the loss quantile at level $\alpha$; CVaR averages losses beyond VaR.
 \begin{align*}
     p &= \sin^2(\theta), \quad p_m = \sin^2((2m+1)\theta)
 \end{align*}
+
+\section{Experimental Setup}
+Experiments vary the number of Monte Carlo paths, the number of IQAE oracle calls, the discretization resolution ($2^n$ bins), and the noise level in the simulator. The return model is Gaussian with an optional crash-mixture scenario, and regime uncertainty is handled with nested Monte Carlo. Histogram-based discretization supports quantum mapping, and a backend toggle compares classical and quantum paths. Results compare classical and quantum estimates using the same threshold $\ell$ and histogram.
+
+\section{Evaluation Metrics}
+We report absolute tail-probability error against a known baseline and track IQAE confidence intervals. The classical curve provides a sanity check on $1/\sqrt{N}$ behavior, while the IQAE curve shows how a few Grover rounds can capture most of the tail probability. Discretization and noise sweeps show the practical regime where IQAE comparisons remain stable. Resource usage (qubits, depth, 2Q gates, oracle calls) is recorded to characterize feasibility.
 
 \section{System Pipeline (Classical to Quantum)}
 Market data calibrates $(\mu,\sigma)$, nested MC yields losses, and discretization builds a $2^n$ histogram and tail mask in the classical pipeline. IQAE then estimates tail probability in the quantum stage.
@@ -144,6 +153,12 @@ Discretization provides a stable bridge to IQAE, simulator estimates align with 
 \section{Who Is Pursuing This Currently?}
 \subsection{Industry Activity}
 J.P. Morgan Chase, Goldman Sachs, HSBC, Barclays, and BNP Paribas are active in quantum finance initiatives. Reported efforts include in-house algorithm development for pricing and risk, JPMorgan demonstrations of quantum algorithms on hardware (Barron), and IBM--JPMorgan collaborations on portfolio optimization and derivatives pricing.
+
+\section{Limitations}
+Results are based on simulator studies and toy data, and feasibility conclusions reflect NISQ-era resource constraints. The evaluation emphasizes comparability and auditability rather than end-to-end performance on production-scale portfolios, and settings in the not-viable region reflect NISQ-era limits where IQAE cost dominates the workflow.
+
+\section{Reproducibility}
+Code and dashboard materials are available at the project repository listed in the Acknowledgment section.
 
 \section{Conclusion}
 The MVP validates a classical-to-quantum risk pipeline with consistent inputs, interpretable outputs, and a clear audit trail from data to tail estimate. IQAE offers a potential quadratic reduction in sampling complexity; our results focus on comparability and feasibility under near-term constraints.
