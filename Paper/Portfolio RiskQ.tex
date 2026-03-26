@@ -104,7 +104,7 @@ We report absolute tail-probability error against a known baseline and track IQA
 Market data calibrates $(\mu,\sigma)$, nested MC yields losses, and discretization builds a $2^n$ histogram and tail mask in the classical pipeline. IQAE then estimates tail probability in the quantum stage.
 
 \section{Analysis and Results}
-We validated probability normalization and tail-mask correctness, compared IQAE estimates to true tail probability on toy data, and tracked resource usage (qubits, depth, 2Q gates, oracle calls). Classical and quantum estimates used the same $\ell$ and histogram, and the dashboard reported VaR/CVaR with a tail-highlighted histogram.
+We validated probability normalization and tail-mask correctness, then compared IQAE estimates to true tail probability on toy data using the same $\ell$ and histogram for classical and quantum paths. Results show classical Monte Carlo error decreasing with sample size (consistent with $1/\sqrt{N}$ behavior), while IQAE achieves low tail-probability error with a small number of Grover iterations, as illustrated in Fig.~\ref{fig:exp-classical-quantum}. Discretization and noise sweeps identify a stable operating regime where comparisons remain reliable (Fig.~\ref{fig:exp-discretization-noise}). We also tracked resource usage (qubits, depth, 2Q gates, oracle calls) and summarized feasibility via the boundary analysis in Fig.~\ref{fig:feasibility-boundary}. The dashboard reports VaR/CVaR and a tail-highlighted histogram alongside IQAE confidence intervals and absolute/relative error (Fig.~\ref{fig:dashboard}).
 
 \section{Key Contribution}
 We present a classical-to-quantum VaR/CVaR workflow that uses a discretized histogram and tail mask to enable IQAE comparison against nested Monte Carlo. We also map feasibility boundaries for NISQ constraints and validate the pipeline in a production-style dashboard. This bridges research-grade quantum estimation with production-style risk reporting, including confidence intervals and error metrics.
@@ -138,7 +138,7 @@ In the feasible region, resource demands stay low enough for near-term devices, 
 \end{figure}
 
 \section{Dashboard Visuals}
-Left panel collects portfolio inputs and stress settings; right panel reports VaR/CVaR, a tail-highlighted histogram, and a classical vs quantum comparison (Fig.~\ref{fig:dashboard}). IQAE reports the same tail probability with a confidence interval and absolute/relative error.
+Left panel collects portfolio inputs and stress settings; right panel reports VaR/CVaR, a tail-highlighted histogram, and a classical vs quantum comparison (Fig.~\ref{fig:dashboard}). IQAE reports the same tail probability with a confidence interval and absolute/relative error. The control panel includes portfolio weights and horizon days, a return model selector (normal vs crash-mixture), an optional tail threshold override, and a backend toggle between classical and IQAE. Stress sliders adjust volatility multiplier, correlation spike, and mean shock, while crash-mixture sliders set crash probability, crash mean shift, and crash volatility jump. When IQAE is enabled, the histogram qubit slider sets the number of loss bins used for discretization.
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.48\linewidth]{c_dash.png}\hfill
@@ -151,7 +151,6 @@ Left panel collects portfolio inputs and stress settings; right panel reports Va
 Discretization provides a stable bridge to IQAE, simulator estimates align with expected tail probabilities, and resource reports clarify near-term feasibility limits. Comparisons use the same threshold $\ell$, scenario, and histogram, and IQAE estimates match classical tail probability on toy data.
 
 \section{Who Is Pursuing This Currently?}
-\subsection{Industry Activity}
 J.P. Morgan Chase, Goldman Sachs, HSBC, Barclays, and BNP Paribas are active in quantum finance initiatives. Reported efforts include in-house algorithm development for pricing and risk, JPMorgan demonstrations of quantum algorithms on hardware (Barron), and IBM--JPMorgan collaborations on portfolio optimization and derivatives pricing.
 
 \section{Limitations}

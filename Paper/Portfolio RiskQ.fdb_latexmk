@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774462081.17008 "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Paper/Portfolio RiskQ.tex" "Portfolio RiskQ.pdf" "Portfolio RiskQ" 1774462081.9937 0
+["pdflatex"] 1774543502.32822 "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Paper/Portfolio RiskQ.tex" "Portfolio RiskQ.pdf" "Portfolio RiskQ" 1774543503.08903 0
   "../Poster/c_dash.png" 1773685431.7514 228522 63c35185bb9a234858840b08975724fe ""
   "../Poster/q_dash.png" 1773685371.3115 258997 4a66c6b6596f3d4d9fd75ae89022460c ""
   "../experiments/plots/classical_error_vs_paths.png" 1773771662.52676 45054 d4e47c139e124c6b18859bfd80762011 ""
@@ -7,7 +7,7 @@
   "../experiments/plots/error_vs_noise_level.png" 1773771662.70092 55009 c9aeb31dd00492613ce8d4d3d3079f08 ""
   "../experiments/plots/feasibility_boundary.png" 1773771662.78482 41306 5159231969b19063f18139647af2f7c2 ""
   "../experiments/plots/quantum_error_vs_oracle_calls.png" 1773771662.58433 50728 990a3dfa7d2a8c6a58469eff4a8a317a ""
-  "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Paper/Portfolio RiskQ.tex" 1774461952.57041 12994 6aef1b09a417879332ffde731010cb39 ""
+  "/Users/emilyberlinghoff/Documents/School/Clubs/WQC/Quant/Dynamic-Risk-Dashboard/Paper/Portfolio RiskQ.tex" 1774543490.19853 14027 2a5ba5dd165227662302a86037ca54b8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1741388039 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1741388039 5466553 2748998d7db8078826afa1f272036265 ""
@@ -87,8 +87,8 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1741388039 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346141 1288109d02d1c772df65535881471649 ""
-  "Portfolio RiskQ.aux" 1774462081.94936 3945 20d1cec6f80617c992c8fc3ac33a62f5 "pdflatex"
-  "Portfolio RiskQ.tex" 1774461952.57041 12994 6aef1b09a417879332ffde731010cb39 ""
+  "Portfolio RiskQ.aux" 1774543503.05346 3823 81daa7e39c4490925b681b9746e08053 "pdflatex"
+  "Portfolio RiskQ.tex" 1774543490.19853 14027 2a5ba5dd165227662302a86037ca54b8 ""
   (generated)
   "Portfolio RiskQ.aux"
   "Portfolio RiskQ.log"
